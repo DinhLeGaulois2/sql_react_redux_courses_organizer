@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cst from '../../constants/airline_reservation/cst'
+import cst from '../../constants/courses_organizer/cst'
 
-import DisplayBookingListContainer from '../../containers/airline_reservation/DisplayBookingListContainer'
-import DisplayPassengerListContainer from '../../containers/airline_reservation/DisplayPassengerListContainer'
+import DisplayAInstructorContainer from '../../containers/courses_organizer/DisplayAInstructorContainer'
+import DisplayAStudentContainer from '../../containers/courses_organizer/DisplayAStudentContainer'
+import DisplayInstructorsContainer from '../../containers/courses_organizer/DisplayInstructorsContainer'
+import DisplayPersonsContainer from '../../containers/courses_organizer/DisplayPersonsContainer'
+import DisplayStudentsContainer from '../../containers/courses_organizer/DisplayStudentsContainer'
 
 const DisplayUIComponent = ({ status, menuStatus, onClickGetPassengers, onClickGetBookings }) => (
     <div style={{ 'backgroundColor': 'gray' }}>

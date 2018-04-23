@@ -64,6 +64,7 @@ const cst = {
     
     MENU_ADD: "MENU_ADD",
     MENU_DISPLAY: "MENU_DISPLAY",
+    MENU_UPDATE: "MENU_UPDATE",
 }
 
 export default cst

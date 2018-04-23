@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 
 import cst from '../../constants/airline_reservation/cst'
 
-import AddBookingContainer from '../../containers/airline_reservation/AddBookingContainer'
-import AddPassengerContainer from '../../containers/airline_reservation/AddPassengerContainer'
+import AddCourseContainer from '../../containers/courses_organizer/AddCourseContainer'
+import AddInstructorCourseContainer from '../../containers/courses_organizer/AddInstructorCourseContainer'
+import AddOnlineCourseContainer from '../../containers/courses_organizer/AddOnlineCourseContainer'
+import AddOnsiteCourseContainer from '../../containers/courses_organizer/AddOnsiteCourseContainer'
+import AddPersonContainer from '../../containers/courses_organizer/AddPersonContainer'
+import AddStudentCourseContainer from '../../containers/courses_organizer/AddStudentCourseContainer'
 
 const AddUIComponent = ({ status, menuStatus, onClickAddBooking, onClickAddPassenger }) => (
     <div style={{ 'backgroundColor': 'gray' }}>
