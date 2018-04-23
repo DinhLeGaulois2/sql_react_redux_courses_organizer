@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import DisplayPersonsComponent from "../../components/courses_organizer/DisplayPersonsComponent"
+import AddInstructorComponent from "../../components/courses_organizer/AddInstructorComponent"
 
 import cst from "../../constants/courses_organizer/cst"
 
@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const DisplayPersonsContainer = connect(
+const AddInstructorContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(DisplayPersonsComponent)
+)(AddInstructorComponent)
 
-export default DisplayPersonsContainer
+export default AddInstructorContainer

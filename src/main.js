@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import store from "./store";
 
-import MainMenu from './containers/airline_reservation/MainMenuContainer'
+import MainMenu from './containers/courses_organizer/MainMenuContainer'
 
 ReactDOM.render(
     <Provider store={store}>

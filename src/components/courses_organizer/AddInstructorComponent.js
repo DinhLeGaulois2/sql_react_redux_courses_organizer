@@ -9,37 +9,37 @@ const validate = values => {
     return errors
 }
 
-let AddStudentCourseComponent = ({ }) => (
+let AddInstructorComponent = ({ }) => (
     <div>
     </div>)
 
-AddStudentCourseComponent.propTypes = {
+AddInstructorComponent.propTypes = {
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('addStudentForm'));
+    dispatch(reset('addCourseForm'));
 
-    AddStudentCourseComponent = reduxForm({
-    form: 'addStudentForm',
+    AddInstructorComponent= reduxForm({
+    form: 'addCourseForm',
     validate,
     onSubmitSuccess: afterSubmit
-})(AddStudentCourseComponent)
+})(AddInstructorComponent)
 
 // Decorate with connect to read form values
-const selector = ('addStudentForm') // <-- same as form name
-AddStudentCourseComponent = connect(
+const selector = ('addCourseForm') // <-- same as form name
+AddInstructorComponent = connect(
     state => {
         return {  }
     }
-)(AddStudentCourseComponent)
+)(AddInstructorComponent)
 
 
-AddStudentCourseComponent = connect(
+AddInstructorComponent = connect(
     state => ({
         initialValues: {
         }
     })
-)(AddStudentCourseComponent)
+)(AddInstructorComponent)
 
-export default AddStudentCourseComponent
+export default AddInstructorComponent

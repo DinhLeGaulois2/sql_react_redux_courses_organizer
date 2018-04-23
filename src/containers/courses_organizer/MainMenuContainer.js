@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import MainMenuComponent from '../../components/airline_reservation/MainMenuComponent'
-import actions from '../../actions/airline_reservation/reservationAction'
+import MainMenuComponent from '../../components/courses_organizer/MainMenuComponent'
+import actions from '../../actions/courses_organizer/courseAction'
 
 const mapStateToProps = (state) => ({
     menuStatus: state.courses.menuStatus

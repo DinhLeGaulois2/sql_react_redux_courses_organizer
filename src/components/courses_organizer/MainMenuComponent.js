@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cst from '../../constants/airline_reservation/cst'
+import cst from '../../constants/courses_organizer/cst'
 
-import AddUIContainer from '../../containers/airline_reservation/AddUIContainer'
-import DisplayUIContainer from '../../containers/airline_reservation/DisplayUIContainer'
+import AddUIContainer from '../../containers/courses_organizer/AddUIContainer'
+import DisplayUIContainer from '../../containers/courses_organizer/DisplayUIContainer'
 
 const MainMenuComponent = ({ menuStatus, doRequest, changeStatus }) =>
     <div>

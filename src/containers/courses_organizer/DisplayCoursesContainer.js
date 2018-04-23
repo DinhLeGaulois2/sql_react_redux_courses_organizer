@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import AddPersonComponent from "../../components/courses_organizer/AddPersonComponent"
+import DisplayCoursesComponent from "../../components/courses_organizer/DisplayCoursesComponent"
 
 import cst from "../../constants/courses_organizer/cst"
 
@@ -12,12 +12,13 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    onClickChangeStatus: (p1, p2) => { dispatch(actions.setStatus(p1, p2))}
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const AddPersonContainer = connect(
+const DisplayCoursesContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddPersonComponent)
+)(DisplayCoursesComponent)
 
-export default AddPersonContainer
+export default DisplayCoursesContainer

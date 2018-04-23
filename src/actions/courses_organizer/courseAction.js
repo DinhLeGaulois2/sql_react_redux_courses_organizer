@@ -24,7 +24,7 @@ const reservationAction = {
                         type: cst.ADD_INSTRUCTOR_COURSE_SUCCESS
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Instructor Insertion Error: " + err) })
         }
     },
 
@@ -36,7 +36,7 @@ const reservationAction = {
                         type: cst.SET_COURSE_ONLINE_SUCCESS
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Online Course Insertion Error: " + err) })
         }
     },
 
@@ -48,7 +48,7 @@ const reservationAction = {
                         type: cst.SET_COURSE_ONSITE_SUCCESS
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Onsite Course Insertion Error: " + err) })
         }
     },
 
@@ -60,7 +60,7 @@ const reservationAction = {
                         type: cst.ADD_STUDENT_COURSE_SUCCESS
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Student Insertion Error: " + err) })
         }
     },
 
@@ -73,7 +73,7 @@ const reservationAction = {
                         payload: response
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Instructor Request Error: " + err) })
         }
     },
 
@@ -86,7 +86,7 @@ const reservationAction = {
                         payload: response
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Student Request Error: " + err) })
         }
     },
 
@@ -99,7 +99,7 @@ const reservationAction = {
                         payload: response
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Instructors Request Error: " + err) })
         }
     },
 
@@ -112,7 +112,33 @@ const reservationAction = {
                         payload: response
                     })
                 })
-                .catch(err => { console.log("Course Insertion Error: " + err) })
+                .catch(err => { console.log("Students Request Error: " + err) })
+        }
+    },
+
+    showACourse: (cId) => {
+        return dispatch => {
+            axios.get("/api/get/course/", cId)
+                .then(response => {
+                    dispatch({
+                        type: cst.GET_COURSE_BY_ID_SUCCESS,
+                        payload: response
+                    })
+                })
+                .catch(err => { console.log("Courses Request Error: " + err) })
+        }
+    },
+
+    showCourses: () => {
+        return dispatch => {
+            axios.get("/api/get/courses")
+                .then(response => {
+                    dispatch({
+                        type: cst.GET_COURSES_SUCCESS,
+                        payload: response
+                    })
+                })
+                .catch(err => { console.log("Courses Request Error: " + err) })
         }
     },
 

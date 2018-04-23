@@ -18,16 +18,16 @@ AddCourseComponent.propTypes = {
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset(''));
+    dispatch(reset('addCourseForm'));
 
     AddCourseComponent= reduxForm({
-    form: '',
+    form: 'addCourseForm',
     validate,
     onSubmitSuccess: afterSubmit
 })(AddCourseComponent)
 
 // Decorate with connect to read form values
-const selector = ('') // <-- same as form name
+const selector = ('addCourseForm') // <-- same as form name
 AddCourseComponent = connect(
     state => {
         return {  }
