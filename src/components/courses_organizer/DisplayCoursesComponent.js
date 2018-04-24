@@ -14,11 +14,12 @@ const validate = values => {
 let DisplayCoursesComponent = ({ data, onClickShowACourse }) => (
     <div>
         <table align="center"><tbody>
-            <tr><th align="center"><h3><font color="blue"><b>Courses Available</b></font></h3></th></tr>
+            <tr><th align="center"><h3 align="center"><font color="blue"><b>Courses Available</b></font></h3></th></tr>
             {data.map((d, index) =>
                 <tr key={index}><td>
                     <div onClick={e => { onClickShowACourse(d.courseId) }}>
                         <h3><font color="blue"><b>Course (id: {d.courseId})</b></font></h3>
+                        <hr/>
                         <b><u>Title</u></b>: {d.title}<br />
                         <b><u>Department</u></b>: {d.department.name} (administrator: {d.department.administrator})<br />
                         {d.isOnsite &&

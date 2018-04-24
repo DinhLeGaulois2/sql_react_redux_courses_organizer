@@ -139,18 +139,14 @@ const reservationAction = {
                         .then(response => {
                             dispatch({
                                 type: cst.GET_INSTRUCTORS_SUCCESS,
-                                payload: response
+                                payload: response.data
                             })
                         })
                         .catch(err => { console.log("Instructors Request Error: " + err) })
                 }
                 else if (actionStatus == cst.GET_COURSES) {
-                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                    console.log("Action, getcourses!!!!!")
                     axios.get("/api/get/courses")
                         .then(response => {
-                            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                            console.log("Action, getcourses!!!!! response: " + JSON.stringify(response, null, 5))
                             dispatch({
                                 type: cst.GET_COURSES_SUCCESS,
                                 payload: response.data
