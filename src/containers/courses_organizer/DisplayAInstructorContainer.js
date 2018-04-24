@@ -8,16 +8,12 @@ import cst from "../../constants/courses_organizer/cst"
 import actions from "../../actions/courses_organizer/courseAction"
 
 const mapStateToProps = (state) => ({
-    data: state.courses.data
-})
-
-const mapDispatchToProps = (dispatch) => ({
+    instructor: state.courses.data[0]
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
 const DisplayAInstructorContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(DisplayAInstructorComponent)
 
 export default DisplayAInstructorContainer

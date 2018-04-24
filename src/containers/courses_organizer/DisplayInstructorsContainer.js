@@ -8,7 +8,8 @@ import cst from "../../constants/courses_organizer/cst"
 import actions from "../../actions/courses_organizer/courseAction"
 
 const mapStateToProps = (state) => ({
-    data: state.courses.data
+    data: state.courses.data,
+    status: state.courses.status
 })
 
 const mapDispatchToProps = (dispatch) => ({
