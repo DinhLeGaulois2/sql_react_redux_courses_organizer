@@ -11,7 +11,7 @@ import UpdateStudentGradeContainer from '../../containers/courses_organizer/Upda
 
 const AddUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
     <div style={{ 'backgroundColor': 'gray' }}>
-        <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center">
+        <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{'padding': '10px'}}>
             <button type="button" className="btn" onClick={e => {
                 e.preventDefault()
                 onClickChangeStatus("", cst.ADD_INSTRUCTOR)

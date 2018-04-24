@@ -3,7 +3,7 @@ import cst from '../../constants/courses_organizer/cst'
 const initialStates = {
     data: [],
     status: cst.GET_DEPARTMENTS,
-    menuStatus: cst.MENU_NEUTRAL
+    menuStatus: cst.MENU_DISPLAY
 }
 
 const reservation = (state = initialStates, action) => {
@@ -87,7 +87,7 @@ const reservation = (state = initialStates, action) => {
         }
         case cst.GET_STUDENT_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
+                data:  state.data.filter(a => a.id == action.payload ? a : null),
                 status: action.type
             })
         }
@@ -111,7 +111,7 @@ const reservation = (state = initialStates, action) => {
         }
         case cst.GET_INSTRUCTOR_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
+                data: state.data.filter(a => a.id == action.payload ? a : null),
                 status: action.type
             })
         }
@@ -134,8 +134,11 @@ const reservation = (state = initialStates, action) => {
             })
         }
         case cst.GET_COURSE_BY_ID_SUCCESS: {
+            let cc = state.data.filter(a => a.courseId == action.payload ? a : null)
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("cc: " + JSON.stringify(cc, null, 5))
             return Object.assign({}, state, {
-                data: action.payload,
+                data: state.data.filter(a => a.courseId == action.payload ? a : null),
                 status: action.type
             })
         }
@@ -146,6 +149,8 @@ const reservation = (state = initialStates, action) => {
             })
         }
         case cst.GET_COURSES_SUCCESS: {
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("reducer, response: " + JSON.stringify(action.payload, null, 5))
             return Object.assign({}, state, {
                 data: action.payload,
                 status: action.type

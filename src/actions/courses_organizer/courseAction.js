@@ -64,87 +64,102 @@ const reservationAction = {
         }
     },
 
-    showAInstructor: (iId) => {
+    getAInstructor: (iId) => {
         return dispatch => {
-            axios.get("/api/get/instructor/", iId)
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_INSTRUCTOR_BY_ID_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Instructor Request Error: " + err) })
+            dispatch({
+                type: cst.GET_INSTRUCTOR_BY_ID_SUCCESS,
+                payload: iId
+            })
         }
     },
 
-    showAStudent: (sId) => {
+    getACourse: (cId) => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("getACourse, cId: " + cId)
         return dispatch => {
-            axios.get("/api/get/student/", sId)
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_STUDENT_BY_ID_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Student Request Error: " + err) })
+            dispatch({
+                type: cst.GET_COURSE_BY_ID_SUCCESS,
+                payload: cId
+            })
         }
     },
 
-    showInstructors: () => {
+    getAStudent: (sId) => {
         return dispatch => {
-            axios.get("/api/get/instructors")
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_INSTRUCTORS_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Instructors Request Error: " + err) })
+            dispatch({
+                type: cst.GET_STUDENT_BY_ID_SUCCESS,
+                payload: sId
+            })
         }
     },
 
-    showStudents: () => {
-        return dispatch => {
-            axios.get("/api/get/students")
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_STUDENTS_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Students Request Error: " + err) })
-        }
-    },
+    // getInstructors: () => {
+    //     return dispatch => {
+    //         axios.get("/api/get/instructors")
+    //             .then(response => {
+    //                 dispatch({
+    //                     type: cst.GET_INSTRUCTORS_SUCCESS,
+    //                     payload: response
+    //                 })
+    //             })
+    //             .catch(err => { console.log("Instructors Request Error: " + err) })
+    //     }
+    // },
 
-    showACourse: (cId) => {
-        return dispatch => {
-            axios.get("/api/get/course/", cId)
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_COURSE_BY_ID_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Courses Request Error: " + err) })
-        }
-    },
-
-    showCourses: () => {
-        return dispatch => {
-            axios.get("/api/get/courses")
-                .then(response => {
-                    dispatch({
-                        type: cst.GET_COURSES_SUCCESS,
-                        payload: response
-                    })
-                })
-                .catch(err => { console.log("Courses Request Error: " + err) })
-        }
-    },
+    // getCourses: () => {
+    //     return dispatch => {
+    //         axios.get("/api/get/courses")
+    //             .then(response => {
+    //                 dispatch({
+    //                     type: cst.GET_COURSES_SUCCESS,
+    //                     payload: response
+    //                 })
+    //             })
+    //             .catch(err => { console.log("Courses Request Error: " + err) })
+    //     }
+    // },
 
     setStatus: (mainStatus, actionStatus) => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("mainStatus: " + mainStatus + ", actionStatus: " + actionStatus)
         return dispatch => {
-            dispatch({ type: actionStatus })
+            if (actionStatus.length > 0) {
+                if (actionStatus == cst.GET_STUDENTS) {
+                    axios.get("/api/get/students")
+                        .then(response => {
+                            dispatch({
+                                type: cst.GET_STUDENTS_SUCCESS,
+                                payload: response
+                            })
+                        })
+                        .catch(err => { console.log("Students Request Error: " + err) })
+                }
+                else if (actionStatus == cst.GET_INSTRUCTORS) {
+                    axios.get("/api/get/instructors")
+                        .then(response => {
+                            dispatch({
+                                type: cst.GET_INSTRUCTORS_SUCCESS,
+                                payload: response
+                            })
+                        })
+                        .catch(err => { console.log("Instructors Request Error: " + err) })
+                }
+                else if (actionStatus == cst.GET_COURSES) {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("Action, getcourses!!!!!")
+                    axios.get("/api/get/courses")
+                        .then(response => {
+                            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                            console.log("Action, getcourses!!!!! response: " + JSON.stringify(response, null, 5))
+                            dispatch({
+                                type: cst.GET_COURSES_SUCCESS,
+                                payload: response.data
+                            })
+                        })
+                        .catch(err => { console.log("Courses Request Error: " + err) })
+                }
+            }
+            if (mainStatus.length > 0) dispatch({ type: mainStatus })
         }
     }
 }

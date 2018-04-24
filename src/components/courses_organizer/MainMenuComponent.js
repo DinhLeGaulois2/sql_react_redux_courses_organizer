@@ -6,25 +6,29 @@ import cst from '../../constants/courses_organizer/cst'
 import AddUIContainer from '../../containers/courses_organizer/AddUIContainer'
 import DisplayUIContainer from '../../containers/courses_organizer/DisplayUIContainer'
 
-const MainMenuComponent = ({ menuStatus, doRequest, changeStatus }) =>
+const MainMenuComponent = ({ menuStatus, changeStatus }) =>
     <div>
         <table style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr>
             <td align="center" style={{ 'padding': '10px' }}>
-                <button type="button" className="btn" onClick={e => {
-                    e.preventDefault()
-                    changeStatus(cst.MENU_ADD, "")
-                }}>Add</button>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <button type="button" className="btn" onClick={e => {
-                    e.preventDefault()
-                    changeStatus(cst.MENU_DISPLAY, "")
-                }}>Show</button>
+                {menuStatus == cst.MENU_DISPLAY &&
+                    <button type="button" className="btn" onClick={e => {
+                        e.preventDefault()
+                        changeStatus(cst.MENU_ADD, "")
+                    }}>Add</button>
+                }
+                {menuStatus == cst.MENU_ADD &&
+                    <button type="button" className="btn" onClick={e => {
+                        e.preventDefault()
+                        changeStatus(cst.MENU_DISPLAY, "")
+                    }}>Show</button>
+                }
             </td>
         </tr></tbody></table>
-        {menuStatus === cst.MENU_ADD &&
+        <br />
+        {menuStatus == cst.MENU_ADD &&
             <AddUIContainer />
         }
-        {menuStatus === cst.MENU_DISPLAY &&
+        {menuStatus == cst.MENU_DISPLAY &&
             <DisplayUIContainer />
         }
     </div>
