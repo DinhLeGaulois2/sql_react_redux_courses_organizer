@@ -16,6 +16,45 @@ const reservationAction = {
         }
     },
 
+    addDeparment: (data) => {
+        return dispatch => {
+            axios.post("/api/add/course", data)
+                .then(response => {
+                    dispatch({
+                        type: cst.ADD_DEPARTMENT_SUCCESS,
+                        payload: response
+                    })
+                })
+                .catch(err => { console.log("Department Insertion Error: " + err) })
+        }
+    },
+
+    addInstructor: (data) => {
+        return dispatch => {
+            axios.post("/api/add/course", data)
+                .then(response => {
+                    dispatch({
+                        type: cst.ADD_INSTRUCTOR_SUCCESS,
+                        payload: response
+                    })
+                })
+                .catch(err => { console.log("Instructor Insertion Error: " + err) })
+        }
+    },
+
+    addStudent: (data) => {
+        return dispatch => {
+            axios.post("/api/add/course", data)
+                .then(response => {
+                    dispatch({
+                        type: cst.ADD_STUDENT_SUCCESS,
+                        payload: response
+                    })
+                })
+                .catch(err => { console.log("Student Insertion Error: " + err) })
+        }
+    },
+
     addInstructorCourse: (data) => {
         return dispatch => {
             axios.post("/api/add/course-instructor", data)
@@ -171,6 +210,41 @@ const reservationAction = {
                             })
                         })
                         .catch(err => { console.log("Courses Request Error: " + err) })
+                }
+                else if (actionStatus == cst.ADD_COURSE) {
+                    axios.get("/api/get/departments")
+                        .then(response => {
+                            let obj = []
+                            for (let i = 0; i < response.data.length; i++) {
+                                obj.push({
+                                    id: response.data[i].id,
+                                    name: response.data[i].name,
+                                    administrator: response.data[i].administrator
+                                })
+                            }
+                            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                            console.log("actions, add_course, data: " + JSON.stringify(obj, null, 5))
+                            dispatch({
+                                type: actionStatus,
+                                payload: obj
+                            })
+                        }
+                        ).catch(err => console.log(err))
+                }
+                else if (actionStatus == cst.ADD_INSTRUCTOR) {
+                    dispatch({
+                        type: actionStatus
+                    })
+                }
+                else if (actionStatus == cst.ADD_STUDENT) {
+                    dispatch({
+                        type: actionStatus
+                    })
+                }
+                else if (actionStatus == cst.ADD_DEPARTMENT) {
+                    dispatch({
+                        type: actionStatus
+                    })
                 }
             }
             if (mainStatus.length > 0) dispatch({ type: mainStatus })

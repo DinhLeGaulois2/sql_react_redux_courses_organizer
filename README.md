@@ -28,6 +28,9 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 ### All Information about a Student
 ![alt text](assets/img/student.jpg)
 
+### Add a Course
+![alt text](assets/img/addCourse.jpg)
+
 ---
 
 

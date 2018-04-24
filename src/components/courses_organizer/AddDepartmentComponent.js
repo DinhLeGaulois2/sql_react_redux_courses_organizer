@@ -6,14 +6,16 @@ import { renderInputField, renderTextareaField } from '../../common/reduxForm/re
 
 const validate = values => {
     const errors = {}
-    if (!values.lastName)
-        errors.lastName = "*"
-    if (!values.firstName)
-        errors.firstName = "*"
+    if (!values.name)
+        errors.name = "*"
+    if (!values.budget)
+        errors.budget = "*"
+    if (!values.admistrator)
+        errors.admistrator = "*"
     return errors
 }
 
-let AddStudentComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddStudent }) => (
+let AddDepartmentComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddDepartment }) => (
     <div>
         <div className="container" style={{ 'backgroundColor': 'white' }}>
             <div align="center" className="mainTitle" style={{
@@ -26,13 +28,14 @@ let AddStudentComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
                 'fontWeight': 'bold',
                 'textAlign': 'center',
                 'margin': '20px 0px'
-            }}>Add New Student</div>
+            }}>Add New Department</div>
         </div>
         <br />
-        <form onSubmit={handleSubmit(onClickAddStudent)}>
+        <form onSubmit={handleSubmit(onClickAddDepartment)}>
             <div>
-                <Field name="lastName" component={renderInputField} placeholder="First Name" /><br />
-                <Field name="firstName" component={renderInputField} placeholder="Last Name" /><br />
+                <Field name="name" component={renderInputField} placeholder="Name" /><br />
+                <Field name="budget" component={renderInputField} placeholder="Budget" /><br />
+                <Field name="admistrator" component={renderInputField} placeholder="Administrator" /><br />
             </div>
             <br /> <hr />
             <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
@@ -41,18 +44,18 @@ let AddStudentComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
         </form>
     </div>)
 
-AddStudentComponent.propTypes = {
-    onClickAddStudent: PropTypes.func.isRequired
+AddDepartmentComponent.propTypes = {
+    onClickAddDepartment: PropTypes.func.isRequired
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('addStudentForm'));
+    dispatch(reset('addDptForm'));
 
-AddStudentComponent = reduxForm({
-    form: 'addStudentForm',
+AddDepartmentComponent = reduxForm({
+    form: 'addDptForm',
     validate,
     onSubmitSuccess: afterSubmit
-})(AddStudentComponent)
+})(AddDepartmentComponent)
 
-export default AddStudentComponent
+export default AddDepartmentComponent

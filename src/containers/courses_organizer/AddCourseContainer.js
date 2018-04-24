@@ -8,10 +8,11 @@ import cst from "../../constants/courses_organizer/cst"
 import actions from "../../actions/courses_organizer/courseAction"
 
 const mapStateToProps = (state) => ({
-    data: state.courses.data
+    dpt: state.courses.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    onClickAddCourse: (data) => { dispatch(actions.addCourse(data)) }
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself

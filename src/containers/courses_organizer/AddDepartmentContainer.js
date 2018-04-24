@@ -1,23 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import AddInstructorCourseComponent from "../../components/courses_organizer/AddInstructorCourseComponent"
+import AddDepartmentComponent from "../../components/courses_organizer/AddDepartmentComponent"
 
 import cst from "../../constants/courses_organizer/cst"
 
 import actions from "../../actions/courses_organizer/courseAction"
 
-const mapStateToProps = (state) => ({
-    data: state.courses.data
-})
-
 const mapDispatchToProps = (dispatch) => ({
+    onClickAddDepartment: (data) => { dispatch(actions.addDeparment(data)) }
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const AddInstructorCourseContainer = connect(
-    mapStateToProps,
+const AddDepartmentContainer = connect(
+    null,
     mapDispatchToProps
-)(AddInstructorCourseComponent)
+)(AddDepartmentComponent)
 
-export default AddInstructorCourseContainer
+export default AddDepartmentContainer

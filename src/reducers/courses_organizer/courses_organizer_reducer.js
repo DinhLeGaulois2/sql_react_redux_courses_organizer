@@ -9,6 +9,8 @@ const initialStates = {
 const reservation = (state = initialStates, action) => {
     switch (action.type) {
         case cst.ADD_INSTRUCTOR: {
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("ADD_INSTRUCTOR")
             return Object.assign({}, state, {
                 status: action.type
             })
@@ -16,12 +18,13 @@ const reservation = (state = initialStates, action) => {
 
         case cst.ADD_INSTRUCTOR_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
                 status: action.type
             })
         }
 
         case cst.ADD_STUDENT: {
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("ADD_STUDENT")
             return Object.assign({}, state, {
                 status: action.type
             })
@@ -29,12 +32,13 @@ const reservation = (state = initialStates, action) => {
 
         case cst.ADD_STUDENT_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
                 status: action.type
             })
         }
 
         case cst.ADD_DEPARTMENT: {
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("ADD_DEPARTMENT")
             return Object.assign({}, state, {
                 status: action.type
             })
@@ -42,20 +46,21 @@ const reservation = (state = initialStates, action) => {
 
         case cst.ADD_DEPARTMENT_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
                 status: action.type
             })
         }
 
         case cst.ADD_COURSE: {
+            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+            console.log("ADD_COURSE, payload: " + JSON.stringify(action.payload, null, 5))
             return Object.assign({}, state, {
-                status: action.type
+                status: action.type,
+                data: action.payload
             })
         }
 
         case cst.ADD_COURSE_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
                 status: action.type
             })
         }
