@@ -1,9 +1,5 @@
 # Courses Organizer - ReactJS
 
-# BUILDING: Backend: Done! Need 2 Add frontend ...
-
----
-
 ## Aim
 Building a project based on an EER (Enhanced Entity-Relationship).
 
