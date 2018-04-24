@@ -28,7 +28,7 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 
 ## Execution
 
-> 1 - Create a database name '**airline_reservation**' (enter the password of **YOUR** database. Instruction in this file [here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server/models/index.js)).<br/>
+> 1 - Create a database name '**courses_organizer**' (enter the password of **YOUR** database. Instruction in this file [here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server/models/index.js)).<br/>
 > 2 - Execute (on the application's **root** folder): **npm install** (to install **dependencies**)<br/>
 > 3 - Execute (on the application's **root** folder): **npm run build** (to run the **server**)<br/>
 > 4 - Open your web browser (***Firefox***, ***Chrome***, etc.) then, enter: **localhost:3000**<br/>
