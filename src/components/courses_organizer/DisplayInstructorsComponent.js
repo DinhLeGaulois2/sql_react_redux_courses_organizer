@@ -4,19 +4,25 @@ import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import PropTypes from 'prop-types'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
 
+import '../../style.scss'
+
 const validate = values => {
     const errors = {}
     return errors
 }
 
-let DisplayInstructorsComponent = ({ data, status, onClickShowAnInstructor }) => (
+let DisplayInstructorsComponent = ({ data, status, onClickShowAnInstructor, onClickDelete }) => (
     <div>
         <table align="center"><tbody>
             <tr><th align="center"><h3 align="center"><font color="blue"><b>Instructors</b></font></h3></th></tr>
             {data.map((d, index) =>
-                <tr key={index}><td>
-                    <div onClick={e => { onClickShowAnInstructor(d.id) }}>
-                        <h3><font color="blue"><b>Instructor (id: {d.id})</b></font></h3>
+                <tr key={index}><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
+                    <div onClick={e => { onClickShowAnInstructor(d.id) }} className="relative">
+                        <h3 align="center" className="centeredChapterTitle"><font color="blue"><b>Instructor (id: {d.id})</b></font></h3>
+                        <button type="button" className="btnDelete" onClick={e => {
+                            e.preventDefault()
+                            onClickDelete(d.id)
+                        }}>x</button>
                         <b><u>Name</u></b>: {d.fName} {d.lName}<br />
                         {d.courses.length == 1 &&
                             <span><b><u>Course</u></b>: {d.courses[0].title} (Dpt: {d.courses[0].department.name}, type: {d.courses[0].isOnsite ? "Onsite" : "Online"})</span>
@@ -34,6 +40,7 @@ let DisplayInstructorsComponent = ({ data, status, onClickShowAnInstructor }) =>
                 </td></tr>
             )}
         </tbody></table>
+        <br /><br />
     </div>)
 
 const anInstructorShape = {
@@ -63,7 +70,8 @@ const anInstructorShape = {
 DisplayInstructorsComponent.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape(anInstructorShape)),
     status: PropTypes.string,
-    onClickShowAnInstructor: PropTypes.func.isRequired
+    onClickShowAnInstructor: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired
 }
 
 export default DisplayInstructorsComponent

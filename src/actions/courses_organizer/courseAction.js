@@ -74,8 +74,6 @@ const reservationAction = {
     },
 
     getACourse: (cId) => {
-        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-        console.log("getACourse, cId: " + cId)
         return dispatch => {
             dispatch({
                 type: cst.GET_COURSE_BY_ID_SUCCESS,
@@ -93,35 +91,55 @@ const reservationAction = {
         }
     },
 
-    // getInstructors: () => {
-    //     return dispatch => {
-    //         axios.get("/api/get/instructors")
-    //             .then(response => {
-    //                 dispatch({
-    //                     type: cst.GET_INSTRUCTORS_SUCCESS,
-    //                     payload: response
-    //                 })
-    //             })
-    //             .catch(err => { console.log("Instructors Request Error: " + err) })
-    //     }
-    // },
+    deleteAStudent: (sId) => {
+        return dispatch => {
+            axios.delete("/api/delete/student/" + sId)
+                .then(response => {
+                    axios.get("/api/get/students")
+                        .then(response => {
+                            dispatch({
+                                type: cst.GET_STUDENTS_SUCCESS,
+                                payload: response.data
+                            })
+                        })
+                        .catch(err => { console.log("Students Request Error: " + err) })
+                }).catch(err => console.log(err))
+        }
+    },
 
-    // getCourses: () => {
-    //     return dispatch => {
-    //         axios.get("/api/get/courses")
-    //             .then(response => {
-    //                 dispatch({
-    //                     type: cst.GET_COURSES_SUCCESS,
-    //                     payload: response
-    //                 })
-    //             })
-    //             .catch(err => { console.log("Courses Request Error: " + err) })
-    //     }
-    // },
+    deleteAInstructor: (iId) => {
+        return dispatch => {
+            axios.delete("/api/delete/instructor/" + iId)
+                .then(response => {
+                    axios.get("/api/get/instructors")
+                        .then(response => {
+                            dispatch({
+                                type: cst.GET_INSTRUCTORS_SUCCESS,
+                                payload: response.data
+                            })
+                        })
+                        .catch(err => { console.log("Instructors Request Error: " + err) })
+                }).catch(err => console.log(err))
+        }
+    },
+
+    deleteACourse: (cId) => {
+        return dispatch => {
+            axios.delete("/api/delete/course/" + cId)
+                .then(response => {
+                    axios.get("/api/get/courses")
+                        .then(response => {
+                            dispatch({
+                                type: cst.GET_COURSES_SUCCESS,
+                                payload: response.data
+                            })
+                        })
+                        .catch(err => { console.log("Courses Request Error: " + err) })
+                }).catch(err => console.log(err))
+        }
+    },
 
     setStatus: (mainStatus, actionStatus) => {
-        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-        console.log("mainStatus: " + mainStatus + ", actionStatus: " + actionStatus)
         return dispatch => {
             if (actionStatus.length > 0) {
                 if (actionStatus == cst.GET_STUDENTS) {
@@ -129,7 +147,7 @@ const reservationAction = {
                         .then(response => {
                             dispatch({
                                 type: cst.GET_STUDENTS_SUCCESS,
-                                payload: response
+                                payload: response.data
                             })
                         })
                         .catch(err => { console.log("Students Request Error: " + err) })

@@ -13,6 +13,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_INSTRUCTOR_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -25,6 +26,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_STUDENT_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -37,6 +39,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_DEPARTMENT_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -49,6 +52,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -61,6 +65,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_INSTRUCTOR_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -73,6 +78,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.ADD_STUDENT_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -85,6 +91,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_STUDENT_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data:  state.data.filter(a => a.id == action.payload ? a : null),
@@ -97,6 +104,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_STUDENTS_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -109,6 +117,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_INSTRUCTOR_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.id == action.payload ? a : null),
@@ -121,6 +130,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_INSTRUCTORS_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -133,6 +143,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_COURSE_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.courseId == action.payload ? a : null),
@@ -145,6 +156,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_COURSES_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -157,6 +169,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_DEPARTMENT_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -169,6 +182,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.GET_DEPARTMENTS_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -181,6 +195,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.SET_COURSE_ONSITE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -193,6 +208,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.SET_COURSE_ONLINE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -205,6 +221,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.UPDATE_STUDENT_GRADE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -217,6 +234,7 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.DELETE_DPT_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
@@ -229,10 +247,11 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.DELETE_INSTRUCTOR_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
-                status: action.type
+                data: state.data.filter(a => a.id != action.payload ? a : null),
+                status: cst.GET_INSTRUCTORS_SUCCESS
             })
         }
 
@@ -241,22 +260,25 @@ const reservation = (state = initialStates, action) => {
                 status: action.type
             })
         }
+
         case cst.DELETE_STUDENT_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
-                status: action.type
+                data: state.data.filter(a => a.id != action.payload ? a : null),
+                status: cst.GET_STUDENTS_SUCCESS
             })
         }
 
         case cst.DELETE_COURSE: {
             return Object.assign({}, state, {
-                status: action.type
+                data: state.data.filter(a => a.id != action.payload ? a : null),
+                status: cst.GET_COURSES_SUCCESS
             })
         }
+
         case cst.DELETE_COURSE_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload,
-                status: action.type
+                data: state.data.filter(a => a.courseId != action.payload ? a : null),
+                status: cst.GET_COURSES_SUCCESS
             })
         }
 
@@ -265,6 +287,7 @@ const reservation = (state = initialStates, action) => {
                 menuStatus: action.type
             })
         }
+
         case cst.MENU_DISPLAY: {
             return Object.assign({}, state, {
                 menuStatus: action.type

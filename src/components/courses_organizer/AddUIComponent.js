@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import '../../style.scss'
 import cst from '../../constants/courses_organizer/cst'
 
 import AddInstructorContainer from '../../containers/courses_organizer/AddInstructorContainer'

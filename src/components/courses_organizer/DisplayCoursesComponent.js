@@ -4,6 +4,8 @@ import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import PropTypes from 'prop-types'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
 
+import '../../style.scss'
+
 import cst from '../../constants/courses_organizer/cst'
 
 const validate = values => {
@@ -11,27 +13,31 @@ const validate = values => {
     return errors
 }
 
-let DisplayCoursesComponent = ({ data, onClickShowACourse }) => (
+let DisplayCoursesComponent = ({ data, onClickShowACourse, onClickDelete }) => (
     <div>
         <table align="center"><tbody>
             <tr><th align="center"><h3 align="center"><font color="blue"><b>Courses Available</b></font></h3></th></tr>
             {data.map((d, index) =>
-                <tr key={index}><td>
-                    <div onClick={e => { onClickShowACourse(d.courseId) }}>
-                        <h3><font color="blue"><b>Course (id: {d.courseId})</b></font></h3>
-                        <hr/>
+                <tr key={index}><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
+                    <div onClick={e => { onClickShowACourse(d.courseId) }} className="relative">
+                        <h3 align="center" className="centeredChapterTitle"><font color="blue"><b>Course (id: {d.courseId})</b></font></h3>
+                        <button type="button" className="btnDelete" onClick={e => {
+                            e.preventDefault()
+                            onClickDelete(d.courseId)
+                        }}>x</button>
                         <b><u>Title</u></b>: {d.title}<br />
                         <b><u>Department</u></b>: {d.department.name} (administrator: {d.department.administrator})<br />
                         {d.isOnsite &&
-                            <b><u>Type</u>: <font color="green">ONSITE</font></b>
+                            <b><u>Type</u>: <font color="green">Onsite</font></b>
                         }
                         {!d.isOnsite &&
-                            <b><u>Type</u>: <font color="green">ONLINE</font></b>
+                            <b><u>Type</u>: <font color="green">Onsite</font></b>
                         }
                     </div>
                 </td></tr>
             )}
         </tbody></table>
+        <br /><br />
     </div>)
 
 const aCourseShape = {
@@ -60,7 +66,8 @@ const aCourseShape = {
 
 DisplayCoursesComponent.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape(aCourseShape)),
-    onClickShowACourse: PropTypes.func.isRequired
+    onClickShowACourse: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired
 }
 
 export default DisplayCoursesComponent

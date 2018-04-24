@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import cst from '../../constants/courses_organizer/cst'
 
+import '../../style.scss'
+
 import DisplayAStudentContainer from '../../containers/courses_organizer/DisplayAStudentContainer'
 import DisplayAInstructorContainer from '../../containers/courses_organizer/DisplayAInstructorContainer'
 import DisplayACourseContainer from '../../containers/courses_organizer/DisplayACourseContainer'

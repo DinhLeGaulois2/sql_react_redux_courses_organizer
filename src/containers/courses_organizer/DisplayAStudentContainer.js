@@ -11,9 +11,14 @@ const mapStateToProps = (state) => ({
     student: state.courses.data[0]
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    onClickDelete: sId => {dispatch(actions.deleteAStudent(sId))}
+})
+
 // You have to connect() to any reducers that you wish to connect to yourself
 const DisplayAStudentContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(DisplayAStudentComponent)
 
 export default DisplayAStudentContainer

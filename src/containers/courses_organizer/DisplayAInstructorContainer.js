@@ -11,9 +11,14 @@ const mapStateToProps = (state) => ({
     instructor: state.courses.data[0]
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    onClickDelete: iId => {dispatch(actions.deleteAInstructor(iId))}
+})
+
 // You have to connect() to any reducers that you wish to connect to yourself
 const DisplayAInstructorContainer = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(DisplayAInstructorComponent)
 
 export default DisplayAInstructorContainer

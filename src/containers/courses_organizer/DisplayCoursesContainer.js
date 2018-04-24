@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickShowACourse: (t) => { dispatch(actions.getACourse(t))}
+    onClickShowACourse: (t) => { dispatch(actions.getACourse(t))},
+    onClickDelete: cId => {dispatch(actions.deleteACourse(cId))}
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
