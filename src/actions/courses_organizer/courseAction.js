@@ -18,20 +18,31 @@ const reservationAction = {
 
     addDeparment: (data) => {
         return dispatch => {
-            axios.post("/api/add/course", data)
-                .then(response => {
-                    dispatch({
-                        type: cst.ADD_DEPARTMENT_SUCCESS,
-                        payload: response
-                    })
+            var result = {}
+            result.name = data.name
+            result.budget = parseInt(data.budget)
+            result.administrator = data.administrator
+            result.startDate = new Date()
+            axios.post("/api/add/department", result)
+            .then(response => {
+                dispatch({
+                    type: cst.ADD_DEPARTMENT_SUCCESS,
+                    payload: response
                 })
-                .catch(err => { console.log("Department Insertion Error: " + err) })
+            })
+            .catch(err => { console.log("Department Insertion Error: " + err) })
         }
     },
 
     addInstructor: (data) => {
         return dispatch => {
-            axios.post("/api/add/course", data)
+            let obj = {}
+            obj.lastName = data.lastName,
+            obj.firstName = data.firstName,
+            obj.type = "student",
+            obj.hireDate = new Date(),
+            obj.enrollmentDate = new Date()
+            axios.post("/api/add/instructor", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_INSTRUCTOR_SUCCESS,
@@ -44,7 +55,13 @@ const reservationAction = {
 
     addStudent: (data) => {
         return dispatch => {
-            axios.post("/api/add/course", data)
+            let obj = {}
+            obj.lastName = data.lastName,
+            obj.firstName = data.firstName,
+            obj.type = "student",
+            obj.hireDate = new Date(),
+            obj.enrollmentDate = new Date()
+            axios.post("/api/add/student", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_STUDENT_SUCCESS,
@@ -222,8 +239,6 @@ const reservationAction = {
                                     administrator: response.data[i].administrator
                                 })
                             }
-                            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                            console.log("actions, add_course, data: " + JSON.stringify(obj, null, 5))
                             dispatch({
                                 type: actionStatus,
                                 payload: obj

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import PropTypes from 'prop-types'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+const number = value =>
+  value && isNaN(Number(value)) ? 'Must be a number' : undefined
 
 const validate = values => {
     const errors = {}
@@ -10,8 +12,8 @@ const validate = values => {
         errors.name = "*"
     if (!values.budget)
         errors.budget = "*"
-    if (!values.admistrator)
-        errors.admistrator = "*"
+    if (!values.administrator)
+        errors.administrator = "*"
     return errors
 }
 
@@ -34,8 +36,8 @@ let AddDepartmentComponent = ({ handleSubmit, invalid, submitting, reset, onClic
         <form onSubmit={handleSubmit(onClickAddDepartment)}>
             <div>
                 <Field name="name" component={renderInputField} placeholder="Name" /><br />
-                <Field name="budget" component={renderInputField} placeholder="Budget" /><br />
-                <Field name="admistrator" component={renderInputField} placeholder="Administrator" /><br />
+                <Field name="budget" component={renderInputField} placeholder="Budget" validate={number} /><br />
+                <Field name="administrator" component={renderInputField} placeholder="administrator" /><br />
             </div>
             <br /> <hr />
             <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
