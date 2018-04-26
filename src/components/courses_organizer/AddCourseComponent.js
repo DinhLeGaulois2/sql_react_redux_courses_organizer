@@ -4,6 +4,8 @@ import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import PropTypes from 'prop-types'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
 
+import '../../style.scss'
+
 const validate = values => {
     const errors = {}
     if (!values.title)
@@ -44,8 +46,8 @@ let AddCourseComponent = ({ handleSubmit, invalid, submitting, reset, dpt, onCli
                 </Field>
             </div>
             <br /> <hr />
-            <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
-                <button type="button" className="btnSubmit" disabled={submitting} onClick={reset}>Clear Values</button>
+            <p align="center"><button type="submit" className="btn" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" className="btn" disabled={submitting} onClick={reset}>Clear Values</button>
             </p><br />
         </form>
     </div>)
