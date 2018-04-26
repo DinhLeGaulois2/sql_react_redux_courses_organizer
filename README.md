@@ -1,7 +1,10 @@
-# Courses Organizer - ReactJS
+# Courses Organizer
 
 ## Aim
-Building a project based on an EER (Enhanced Entity-Relationship).
+> This application allows a school's department to manage its courses taking care of all relationship between: 
+>  * **instructors**
+>  * **students** (**grade**)
+>  * **courses** (**online**, **onsite** with schedule, place and time)
 
 ---
 
