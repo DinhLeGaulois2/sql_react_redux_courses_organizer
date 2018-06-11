@@ -7,17 +7,9 @@ var Sequelize = require('sequelize');
 
 var db = {};
 
-var DBInfo = {
-    username: "root",
-    password: conf.db_pwd,   // <----------------- Your Password here
-    database: "courses_organizer",
-    host: "127.0.0.1",
-    dialect: "mysql",
-};
-
-var sequelize = new Sequelize(DBInfo.database, DBInfo.username, DBInfo.password, {
-    host: DBInfo.host,
-    dialect: DBInfo.dialect,
+var sequelize = new Sequelize(conf.database, conf.username, conf.password, {
+    host: conf.host,
+    dialect: conf.dialect,
     logging: false,
     freezeTableName: true,
     operatorsAliases: false

@@ -19,6 +19,7 @@ Building a project based on an EER (Enhanced Entity-Relationship). The goal is t
 ---
 
 ## Technologies
+> * **Security**: **JWT-simple**, **bcrypt-nodejs**, **passport** (**passport-jwt**, **passport-local**)
 > * **Front End**: ***React-Redux***
 > * **Back End**: ***Express/Node.js*** + ***Sequelize*** (ORM)
 > * **Database**: ***mySQL***
@@ -27,7 +28,7 @@ Building a project based on an EER (Enhanced Entity-Relationship). The goal is t
 
 ## Enhanced Entity-Relationship
 
-![alt text](assets/img/SchoolDataModel.jpg)
+![alt text](client/assets/img/SchoolDataModel.jpg)
 
 ## Requests (**C**reate, **R**ead, **U**pdate or **D**elete)
 We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database. All possibilities are listed [here](./assets/docs/requests.md).
@@ -36,13 +37,13 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 
 ## User Interface
 ### List of Students
-![alt text](assets/img/studentsList.jpg)
+![alt text](client/assets/img/studentsList.jpg)
 
 ### All Information about a Student
-![alt text](assets/img/student.jpg)
+![alt text](client/assets/img/student.jpg)
 
 ### Add a Course
-![alt text](assets/img/addCourse.jpg)
+![alt text](client/assets/img/addCourse.jpg)
 
 ---
 
@@ -61,7 +62,7 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 
 At the project's root folder, we have a file name "**server.js**" ([here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server.js)), by the end, we have:
 
-![alt text](assets/img/server_config.jpg)
+![alt text](client/assets/img/server_config.jpg)
 
 It's very important to follow the instruction, otherwise, you could have very disappointed surprises ...
 
