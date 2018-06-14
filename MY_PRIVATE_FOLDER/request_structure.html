@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Requests' Structure</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 130%;
+            background-color: #99babb;
+        }
+
+        td,
+        th {
+            padding: 10px;
+            margin: auto;
+            border-color: black;
+        }
+
+        th,
+        table tr td:first-child {
+            color: blue;
+            text-align: center;
+        }
+
+        .chapterTitle,
+        .mainPoint {
+            background-color: black;
+            font-weight: bold;
+            text-align: center;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .chapterTitle {
+            color: cyan;
+            border-radius: 10px;
+        }
+
+        .mainPoint {
+            color: orange;
+            border-radius: 20px;
+        }
+
+        .myLink {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        .code {
+            font-weight: bold;
+            color: black;
+            padding: 10px;
+            margin: 0px;
+        }
+
+        .container {
+            width: 95%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br/>
+        <h1 class="chapterTitle">COURSES ORGANIZER</h1>
+        <hr/>
+        <table align="center" border="1">
+            <tr>
+                <td style="padding: 30px; background-color:#88bdf8; color: white;">
+                    <p>
+                        <a href="#cl_create">CREATE</a>
+                    </p>
+                    <p>
+                        <a href="#cl_read">READ</a>
+                    </p>
+                    <p>
+                        <a href="#cl_update">UPDATE</a>
+                    </p>
+                    <p>
+                        <a href="#cl_delete">DELETE</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <h3 class="mainPoint" id="cl_create">CREATE (CREATE)</h3>
+        <table align="center" border="1">
+            <tr>
+                <th>Request</th>
+                <th>Structure (to Server)</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/department")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    name: (type: String),
+    budget: (type: Integer),
+    startDate: (type: Date),
+    admistrator: (type: String)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/course")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    title: (type: String),
+    credits: (type: String),
+    departmentId: (type: Integer)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/instructor")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    lastName: (type: String),
+    firstName: (type: String),
+    type: 'instructor' (type: String),
+    hireDate: (type: Date),
+    enrollmentDate: (type: Date)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/student")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    lastName: (type: String),
+    firstName: (type: String),
+    type: 'student' (type: String),
+    hireDate: (type: Date),
+    enrollmentDate: (type: Date)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/course-instructor")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    instructorId: (type: String, FK),
+    courseId: (type: String, FK)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/add/course-student")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+        studentId: (type: String, FK),
+        courseId: (type: String, FK),
+        grade: (type: String)
+    }
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/set/course/online")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    courseId: (type: Integer, FK),
+    url: (type: String)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/set/course/onsite")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    courseId: (type: Integer, FK),
+    location: (type: String),
+    day: (type: String),
+    time: (type: String)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+        </table>
+        <hr/>
+        <!-- ===================================================================================================== -->
+        <h3 class="mainPoint" id="cl_read">READ (GET)
+            <br>(server's response: '
+            <b>data</b>')</h3>
+        <table align="center" border="1">
+            <tr>
+                <th>Request</th>
+                <th>Structure (from Server)</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/get/department/:id/")
+                        <br/>OR
+                        <br/>("/api/get/departments")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    "data": [
+        {
+            "id": (type: Integer, PK),
+            "name": (type: String),
+            "administrator": (type: String),
+            "courses": [
+                    {
+                        "id": (type: Integer, PK),
+                        "title": (type: String),
+                        "onsites": [],              //<<<<<<<<<<<<<<<<<<
+                        "online": {                 //<<<<<<<<<<<<<<<<<<
+                            "courseId": (type: Integer, FK)
+                        }
+                    },
+                    {
+                        ...
+
+                        "onsites": [                //<<<<<<<<<<<<<<<<<<
+                            {
+                                "courseId": (type: Integer, FK)
+                            }
+                        ],
+                        "online": null              //<<<<<<<<<<<<<<<<<<
+                    }
+            ]
+        }
+    ]
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/get/course/:id")
+                        <br/>OR
+                        <br/>("/api/get/courses")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    "data": [
+        {
+            "courseId": (type: Integer, FK),
+            "title": (type: String),
+            "department": {
+                "id": (type: Integer, PK),
+                "name": (type: String),
+                "administrator": (type: String)
+            },
+            "isOnsite": (type: Boolean),
+            "onsiteSchedule": [],
+            "instructors": [
+                {
+                    "id": (type: Integer, PK),
+                    "fName": (type: String),
+                    "lName": (type: String),
+                }
+            ],
+            "studentNum": (type: Integer)
+        },
+        {
+            ...
+
+            "onsiteSchedule": [
+                {
+                    "id": (type: Integer, PK),
+                    "location": (type: String),
+                    "days": (type: String),
+                    "time": (type: String)
+                }
+            ],
+
+            ...
+        },
+    ]
+}    
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/get/instructor/:id")
+                        <br/>OR
+                        <br/>("/api/get/instructors")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    "data": [
+        {
+            "id": (type: Integer, 'person', PK),
+            "fName": (type: String),
+            "lName": (type: String),
+            "courses": [
+                {
+                    "courseId": (type: Integer, FK),
+                    "title": (type: String),
+                    "department": {
+                            "id": (type: Integer, PK),
+                            "name": (type: String),
+                            "administrator": (type: String),
+                    },
+                    "isOnsite": (type: Boolean),
+                    "onsiteSchedule": [],          //<<<<<<<<<<<<<<<<<<<<<<<<<<
+                    "studentNum": (type: Integer)
+                },
+                {
+                    ...
+                    
+                    "onsiteSchedule": [          //<<<<<<<<<<<<<<<<<<<<<<<<<<
+                            {
+                                "id": (type: Integer, PK),
+                                "location": (type: String),
+                                "days": (type: String),
+                                "time": (type: String),
+                            }
+                    ]
+                    
+                    ...
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                        <b>("/api/get/student/:id")
+                            <br/>OR
+                        <br/>("/api/get/students")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    "data": [
+            {
+            "id": (type: Integer, 'person', PK),
+            "fName": (type: String),
+            "lName": (type: String),
+            "courses": [
+                {
+                    "courseId": (type: Integer, FK),
+                    "title": (type: String),
+                    "department": {
+                            "id": (type: Integer, PK),
+                            "name": (type: String),
+                            "administrator": (type: String),
+                    },
+                    "isOnsite": (type: Boolean),
+                    "onsiteSchedule": [],          //<<<<<<<<<<<<<<<<<<<<<<<<<<
+                    "studentNum": (type: Integer)
+                },
+                {
+                    ...
+                                                
+                    
+                    "onsiteSchedule": [          //<<<<<<<<<<<<<<<<<<<<<<<<<<
+                        {
+                            "id": (type: Integer, PK),
+                            "location": (type: String),
+                            "days": (type: String),
+                            "time": (type: String),
+                        }
+                        
+                        ...
+                    ]
+                },
+            ]
+        }
+    ]
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+        </table>
+        <hr/>
+        <!-- ===================================================================================================== -->
+        <h3 class="mainPoint" id="cl_update">UPDATE (PUT)</h3>
+        <table align="center" border="1">
+            <tr>
+                <th>Request</th>
+                <th>Structure (to Server)</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/put/department/")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    id: (type: Integer, PK)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/put/student-grade")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>{
+    courseId: (type: Integer, FK),
+    studentId: (type: Integer, FK)
+}
+</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+        </table>
+        <hr/>
+        <!-- ===================================================================================================== -->
+        <h3 class="mainPoint" id="cl_delete">DELETE (DELETE)</h3>
+        <table align="center" border="1">
+            <tr>
+                <th>Request</th>
+                <th>Structure (to Server)</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/delete/department/:id")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>id (type: Integer, req.params)</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/delete/course/:id")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>id (type: Integer, req.params)</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/delete/instructor/:id")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>id (type: Integer, req.params)</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Request -->
+                <td>
+                    <b>("/api/delete/student/:id")</b>
+                </td>
+                <!-- Structure -->
+                <td>
+                    <pre class="code"><code>id (type: Integer, req.params)</code></pre>
+                </td>
+                <!-- comment -->
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
