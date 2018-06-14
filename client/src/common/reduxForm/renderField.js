@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const renderInputField = ({ input, placeholder, type, meta: { touched, error, warning } }) => (
+export const renderInputField = ({ input, placeholder, type, meta: { touched, error } }) => (
     <div>
         <label>{placeholder}</label>&nbsp;{error && <span>(<font color="red">{error}</font>)</span>}
         <div>
@@ -13,7 +13,7 @@ export const renderInputField = ({ input, placeholder, type, meta: { touched, er
     </div>
 )
 
-export const renderTextareaField = ({ textarea, input, placeholder, type, rows, cols, meta: { touched, error, warning } }) => (
+export const renderTextareaField = ({ textarea, input, placeholder, type, rows, cols, meta: { touched, error } }) => (
     <div>
         <label>{placeholder}</label>&nbsp;{error && <span>(<font color="red">{error}</font>)</span>}
         <div>
