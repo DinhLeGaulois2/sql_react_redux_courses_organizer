@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import actions from '../../actions/courses_organizer/reservationAction'
+import actions from '../../actions/courses_organizer/courseAction'
 import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
@@ -15,7 +15,7 @@ class DisplayStudentsComponent extends React.Component {
             <div>
                 <table align="center"><tbody>
                     <tr><th align="center"><h3 align="center"><font color="blue"><b>Students</b></font></h3></th></tr>
-                    {data.map((d, index) =>
+                    {this.props.data.map((d, index) =>
                         <tr key={index}><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
                             <div onClick={e => { this.props.getAStudent(d.id) }} className="relative">
                                 <h3 align="center" className="centeredChapterTitle"><font color="blue"><b>Student (id: {d.id})</b></font></h3>
@@ -46,8 +46,7 @@ class DisplayStudentsComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    data: state.courses.data,
-    status: state.courses.status
+    data: state.students.data,
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(DisplayStudentsComponent))

@@ -3,9 +3,9 @@ import { Route, NavLink } from "react-router-dom";
 import requireAuth from '../requireAuth'
 import '../HeaderStyle.css';
 
-import DisplayCoursesComponent from './components/courses_organizer/DisplayCoursesComponent'
-import DisplayInstructorsComponent from './components/courses_organizer/DisplayInstructorsComponent'
-import DisplayStudentsComponent from './components/courses_organizer/DisplayStudentsComponent'
+import DisplayCoursesComponent from './DisplayCoursesComponent'
+import DisplayInstructorsComponent from './DisplayInstructorsComponent'
+import DisplayStudentsComponent from './DisplayStudentsComponent'
 
 class DisplayUIComponent extends React.Component {
     render() {

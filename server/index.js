@@ -12,6 +12,7 @@ var db = require("./models");
 // App Setup
 app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
+var initValues = require("./data/initialData.js");
 
 // Import routes and give the server access to them.
 require("./routes/auth-routes.js")(app);
@@ -21,7 +22,8 @@ require("./routes/html-routes.js")(app);
 const PORT = process.env.PORT || 3090;
 app.set('port', PORT);
 
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: true }).then(function () {
+    initValues();
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });

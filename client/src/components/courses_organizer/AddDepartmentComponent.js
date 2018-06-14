@@ -3,7 +3,7 @@ import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import actions from '../../actions/courses_organizer/reservationAction'
+import actions from '../../actions/courses_organizer/courseAction'
 import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
@@ -67,7 +67,7 @@ const afterSubmit = (result, dispatch) =>
     dispatch(reset('addDptForm'));
 
 export default compose(
-    connect(nul, actions),
+    connect(null, actions),
     reduxForm({
         form: 'addDptForm',
         validate,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import actions from '../../actions/courses_organizer/reservationAction'
+import actions from '../../actions/courses_organizer/courseAction'
 import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'

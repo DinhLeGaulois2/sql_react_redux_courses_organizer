@@ -3,10 +3,10 @@ import requireAuth from '../requireAuth'
 import { Route, NavLink } from "react-router-dom";
 import '../HeaderStyle.css';
 
-import AddCourseComponent from './components/courses_organizer/AddCourseComponent'
-import AddDepartmentComponent from './components/courses_organizer/AddDepartmentComponent'
-import AddInstructorComponent from './components/courses_organizer/AddInstructorComponent'
-import AddStudentComponent from './components/courses_organizer/AddStudentComponent'
+import AddCourseComponent from './AddCourseComponent'
+import AddDepartmentComponent from './AddDepartmentComponent'
+import AddInstructorComponent from './AddInstructorComponent'
+import AddStudentComponent from './AddStudentComponent'
 
 class AddUIComponent extends React.Component {
     render() {

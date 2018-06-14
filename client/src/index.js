@@ -8,7 +8,7 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './components/App';
 import Welcome from './components/Welcome';
-import MainMenuComponent from './components/airline_reservation/MainMenuComponent'
+import MainMenuComponent from './components/courses_organizer/MainMenuComponent'
 import Signup from './components/auth/Signup';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';

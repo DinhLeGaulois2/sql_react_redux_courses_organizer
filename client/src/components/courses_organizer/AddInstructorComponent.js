@@ -3,7 +3,7 @@ import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
 import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import actions from '../../actions/courses_organizer/reservationAction'
+import actions from '../../actions/courses_organizer/courseAction'
 import requireAuth from '../../components/requireAuth';
 
 
