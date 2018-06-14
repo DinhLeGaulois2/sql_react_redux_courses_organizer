@@ -1,7 +1,5 @@
 # Courses Organizer - Authentication, Protection (Bcrypt)
 
-# [Project will be upgraded: Authentication will be set up for SERVER, DATABASE and UI to protect every "route" that needs protection. The project will NOT WORKING until the process of separation will be done (because some files have been moved)!]
-
 ## Aim
 Building a project based on an EER (Enhanced Entity-Relationship). The goal is to learn to build project base on someone's idea, which is much more difficult than with ours.
 
@@ -48,12 +46,24 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 
 ## Execution
 
+## Execution
+
+> The project is build as a 3-tier architecture (fullstack), and the three parts was built to be ready to be put on different machines (which could be in different continents). So, we need to run 3 parts independently, in order: **database**, then **server** then **user interface**.
+>
+> 1 - You need to create your database with the name '**courses_organizer**' (enter the password of **YOUR** database. Instruction in this file [here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server/models/index.js)).
+>
+> 2 - Open a terminal, and execute (in the folder "**server**"): **npm install** (to install **dependencies**)
+> 
+> 3 - Open ANOTHER termimal, and execute (in the folder "**client**"): **npm run build** (to run the **server**)
+>
+> 4 - Open your web browser (***Firefox***, ***Chrome***, etc.) then, enter: **localhost:3000**
+
 
 ---
 
 ## Configuration (VERY IMPORTANT)
 
-At the project's root folder, we have a file name "**server.js**" ([here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server.js)), by the end, we have:
+At the project's root folder, we have a file name "**index.js**" ([here](https://github.com/DinhLeGaulois2/sql_react_redux_courses_organizer/blob/master/server/index.js)), by the end, we have:
 
 ![alt text](assets/img/server_config.jpg)
 
