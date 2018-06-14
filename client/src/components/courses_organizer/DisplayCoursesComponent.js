@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import actions from '../../actions/courses_organizer/reservationAction'
+import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
 
@@ -13,7 +12,15 @@ const validate = values => {
     return errors
 }
 
-let DisplayCoursesComponent = ({ data, onClickShowACourse, onClickDelete }) => (
+class DisplayCoursesComponent extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        const { data, onClickShowACourse, onClickDelete } = this.props
+
+        return (
     <div>
         <table align="center"><tbody>
             <tr><th align="center"><h3 align="center"><font color="blue"><b>Courses Available</b></font></h3></th></tr>
@@ -39,35 +46,7 @@ let DisplayCoursesComponent = ({ data, onClickShowACourse, onClickDelete }) => (
         </tbody></table>
         <br /><br />
     </div>)
-
-const aCourseShape = {
-    courseId: PropTypes.number,
-    title: PropTypes.string,
-    department: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        administrator: PropTypes.string
-    }),
-    isOnsite: PropTypes.bool,
-    onsiteSchedule: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        location: PropTypes.string,
-        days: PropTypes.string,
-        time: PropTypes.string
-    })),
-    instructors: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        fName: PropTypes.string,
-        lName: PropTypes.string
-    })),
-    status: PropTypes.string,
-    studentNum: PropTypes.number
-}
-
-DisplayCoursesComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape(aCourseShape)),
-    onClickShowACourse: PropTypes.func.isRequired,
-    onClickDelete: PropTypes.func.isRequired
+    }
 }
 
 export default DisplayCoursesComponent

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Field } from 'redux-form'
 
-export const renderInputField = ({ input, placeholder, type, meta: { touched, error } }) => (
+export const renderInputField = ({ input, placeholder, type, meta: { touched, error, warning } }) => (
     <div>
         <label>{placeholder}</label>&nbsp;{error && <span>(<font color="red">{error}</font>)</span>}
         <div>
@@ -14,7 +13,7 @@ export const renderInputField = ({ input, placeholder, type, meta: { touched, er
     </div>
 )
 
-export const renderTextareaField = ({ textarea, input, placeholder, type, rows, cols, meta: { touched, error } }) => (
+export const renderTextareaField = ({ textarea, input, placeholder, type, rows, cols, meta: { touched, error, warning } }) => (
     <div>
         <label>{placeholder}</label>&nbsp;{error && <span>(<font color="red">{error}</font>)</span>}
         <div>

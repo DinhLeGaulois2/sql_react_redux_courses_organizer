@@ -1,58 +1,35 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import requireAuth from '../requireAuth'
+import { Route, NavLink } from "react-router-dom";
+import '../HeaderStyle.css';
 
-import '../../style.scss'
-import cst from '../../constants/courses_organizer/cst'
+import AddCourseComponent from './components/courses_organizer/AddCourseComponent'
+import AddDepartmentComponent from './components/courses_organizer/AddDepartmentComponent'
+import AddInstructorComponent from './components/courses_organizer/AddInstructorComponent'
+import AddStudentComponent from './components/courses_organizer/AddStudentComponent'
 
-import AddInstructorContainer from '../../containers/courses_organizer/AddInstructorContainer'
-import AddStudentContainer from '../../containers/courses_organizer/AddStudentContainer'
-import AddCourseContainer from '../../containers/courses_organizer/AddCourseContainer'
-import AddDepartmentContainer from '../../containers/courses_organizer/AddDepartmentContainer'
-
-const AddUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
-    <div style={{ 'backgroundColor': 'gray' }}>
-        <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.ADD_INSTRUCTOR)
-            }}>Add Instructor</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.ADD_STUDENT)
-            }}>Add Student</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.ADD_COURSE)
-            }}>Add Course</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.ADD_DEPARTMENT)
-            }}>Add Department</button>
-            <br />
-        </td></tr></tbody></table>
-        {menuStatus == cst.MENU_ADD &&
+class AddUIComponent extends React.Component {
+    render() {
+        const { match } = this.props
+        return (
             <div>
-                {status === cst.ADD_INSTRUCTOR &&
-                    <AddInstructorContainer />
-                }
-                {status === cst.ADD_STUDENT &&
-                    <AddStudentContainer />
-                }
-                {status === cst.ADD_COURSE &&
-                    <AddCourseContainer />
-                }
-                {status === cst.ADD_DEPARTMENT &&
-                    <AddDepartmentContainer />
-                }
+                <div style={{ "backgroundColor": "black" }}>
+                    <br />
+                    <p align="center">
+                        <NavLink to={`${match.url}/course`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add Course</NavLink>
+                        <NavLink to={`${match.url}/department`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add Department</NavLink>
+                        <NavLink to={`${match.url}/instructor`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add Instructor</NavLink>
+                        <NavLink to={`${match.url}/student`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add Student</NavLink>
+                    </p>
+                    <br />
+                </div>
+                <Route path={`${match.url}/course`} component={AddCourseComponent} />
+                <Route path={`${match.url}/department`} component={AddDepartmentComponent} />
+                <Route path={`${match.url}/instructor`} component={AddInstructorComponent} />
+                <Route path={`${match.url}/student`} component={AddStudentComponent} />
             </div>
-        }
-    </div>
-)
-
-AddUIComponent.prototype = {
-    status: PropTypes.string,
-    menuStatus: PropTypes.string,
-    onClickChangeStatus: PropTypes.func.isRequired
+        )
+    }
 }
 
-export default AddUIComponent
+export default requireAuth(AddUIComponent)

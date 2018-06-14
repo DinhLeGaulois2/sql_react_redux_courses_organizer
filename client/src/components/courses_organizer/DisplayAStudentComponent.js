@@ -6,7 +6,15 @@ import { renderInputField, renderTextareaField } from '../../common/reduxForm/re
 
 import '../../style.scss'
 
-let DisplayAStudentComponent = ({ student, onClickDelete }) => (
+class DisplayAStudentComponent  extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        const { student, onClickDelete } = this.props
+
+        return (
     <div>
         <table align="center"><tbody>
             <tr><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
@@ -45,33 +53,7 @@ let DisplayAStudentComponent = ({ student, onClickDelete }) => (
         </tbody></table>
         <br /><br />
     </div>)
-
-const aStudentShape = {
-    id: PropTypes.number,
-    fName: PropTypes.string,
-    lName: PropTypes.string,
-    courses: PropTypes.arrayOf(PropTypes.shape({
-        courseId: PropTypes.number,
-        title: PropTypes.string,
-        department: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-            administrator: PropTypes.string
-        }),
-    })),
-    isOnsite: PropTypes.bool,
-    onsiteSchedule: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        location: PropTypes.string,
-        days: PropTypes.string,
-        time: PropTypes.string
-    })),
-    studentNum: PropTypes.number
-}
-
-DisplayAStudentComponent.propTypes = {
-    student: PropTypes.arrayOf(PropTypes.aStudentShape),
-    onClickDelete: PropTypes.func.isRequired
+    }
 }
 
 export default DisplayAStudentComponent

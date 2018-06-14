@@ -5,7 +5,11 @@ import cst from '../../constants/courses_organizer/cst'
 const reservationAction = {
     addCourse: (data) => {
         return dispatch => {
-            axios.post("/api/add/course", data)
+            axios.post("http://localhost:3090/api/add/course", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_COURSE_SUCCESS,
@@ -23,7 +27,11 @@ const reservationAction = {
             result.budget = parseInt(data.budget)
             result.administrator = data.administrator
             result.startDate = new Date()
-            axios.post("/api/add/department", result)
+            axios.post("http://localhost:3090/api/add/department", result, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
             .then(response => {
                 dispatch({
                     type: cst.ADD_DEPARTMENT_SUCCESS,
@@ -42,7 +50,11 @@ const reservationAction = {
             obj.type = "student",
             obj.hireDate = new Date(),
             obj.enrollmentDate = new Date()
-            axios.post("/api/add/instructor", obj)
+            axios.post("http://localhost:3090/api/add/instructor", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_INSTRUCTOR_SUCCESS,
@@ -61,7 +73,11 @@ const reservationAction = {
             obj.type = "student",
             obj.hireDate = new Date(),
             obj.enrollmentDate = new Date()
-            axios.post("/api/add/student", obj)
+            axios.post("http://localhost:3090/api/add/student", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_STUDENT_SUCCESS,
@@ -74,7 +90,11 @@ const reservationAction = {
 
     addInstructorCourse: (data) => {
         return dispatch => {
-            axios.post("/api/add/course-instructor", data)
+            axios.post("http://localhost:3090/api/add/course-instructor", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_INSTRUCTOR_COURSE_SUCCESS
@@ -86,7 +106,11 @@ const reservationAction = {
 
     addOnlineCourse: (data) => {
         return dispatch => {
-            axios.post("/api/set/course/online", data)
+            axios.post("http://localhost:3090/api/set/course/online", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.SET_COURSE_ONLINE_SUCCESS
@@ -98,7 +122,11 @@ const reservationAction = {
 
     addOnsiteCourse: (data) => {
         return dispatch => {
-            axios.post("/api/set/course/onsite", data)
+            axios.post("http://localhost:3090/api/set/course/onsite", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.SET_COURSE_ONSITE_SUCCESS
@@ -110,7 +138,11 @@ const reservationAction = {
 
     addStudentCourse: (data) => {
         return dispatch => {
-            axios.post("/api/add/course-student", data)
+            axios.post("http://localhost:3090/api/add/course-student", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_STUDENT_COURSE_SUCCESS
@@ -149,9 +181,17 @@ const reservationAction = {
 
     deleteAStudent: (sId) => {
         return dispatch => {
-            axios.delete("/api/delete/student/" + sId)
+            axios.delete("http://localhost:3090/api/delete/student/" + sId, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
-                    axios.get("/api/get/students")
+                    axios.get("http://localhost:3090/api/get/students", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_STUDENTS_SUCCESS,
@@ -165,9 +205,17 @@ const reservationAction = {
 
     deleteAInstructor: (iId) => {
         return dispatch => {
-            axios.delete("/api/delete/instructor/" + iId)
+            axios.delete("http://localhost:3090/api/delete/instructor/" + iId, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
-                    axios.get("/api/get/instructors")
+                    axios.get("http://localhost:3090/api/get/instructors", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_INSTRUCTORS_SUCCESS,
@@ -181,9 +229,17 @@ const reservationAction = {
 
     deleteACourse: (cId) => {
         return dispatch => {
-            axios.delete("/api/delete/course/" + cId)
+            axios.delete("http://localhost:3090/api/delete/course/" + cId, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
-                    axios.get("/api/get/courses")
+                    axios.get("http://localhost:3090/api/get/courses", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_COURSES_SUCCESS,
@@ -199,7 +255,11 @@ const reservationAction = {
         return dispatch => {
             if (actionStatus.length > 0) {
                 if (actionStatus == cst.GET_STUDENTS) {
-                    axios.get("/api/get/students")
+                    axios.get("http://localhost:3090/api/get/students", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_STUDENTS_SUCCESS,
@@ -209,7 +269,11 @@ const reservationAction = {
                         .catch(err => { alert("Students Request Error: " + err) })
                 }
                 else if (actionStatus == cst.GET_INSTRUCTORS) {
-                    axios.get("/api/get/instructors")
+                    axios.get("http://localhost:3090/api/get/instructors", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_INSTRUCTORS_SUCCESS,
@@ -219,7 +283,11 @@ const reservationAction = {
                         .catch(err => { alert("Instructors Request Error: " + err) })
                 }
                 else if (actionStatus == cst.GET_COURSES) {
-                    axios.get("/api/get/courses")
+                    axios.get("http://localhost:3090/api/get/courses", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             dispatch({
                                 type: cst.GET_COURSES_SUCCESS,
@@ -229,7 +297,11 @@ const reservationAction = {
                         .catch(err => { alert("Courses Request Error: " + err) })
                 }
                 else if (actionStatus == cst.ADD_COURSE) {
-                    axios.get("/api/get/departments")
+                    axios.get("http://localhost:3090/api/get/departments", {
+                        headers: {
+                            'authorization': localStorage.getItem('token')
+                        }
+                    })
                         .then(response => {
                             let obj = []
                             for (let i = 0; i < response.data.length; i++) {

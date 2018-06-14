@@ -6,7 +6,15 @@ import { renderInputField, renderTextareaField } from '../../common/reduxForm/re
 
 import '../../style.scss'
 
-let DisplayAInstructorComponent = ({ instructor, onClickDelete }) => (
+class DisplayAInstructorComponent extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        const { instructor, onClickDelete } = this.props
+
+        return (
     <div>
         <table align="center"><tbody>
             <tr><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
@@ -43,33 +51,7 @@ let DisplayAInstructorComponent = ({ instructor, onClickDelete }) => (
         </tbody></table>
         <br /><br />
     </div>)
-
-const anInstructorShape = {
-    id: PropTypes.number,
-    fName: PropTypes.string,
-    lName: PropTypes.string,
-    courses: PropTypes.arrayOf(PropTypes.shape({
-        courseId: PropTypes.number,
-        title: PropTypes.string,
-        department: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-            administrator: PropTypes.string
-        }),
-    })),
-    isOnsite: PropTypes.bool,
-    onsiteSchedule: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        location: PropTypes.string,
-        days: PropTypes.string,
-        time: PropTypes.string
-    })),
-    studentNum: PropTypes.number
-}
-
-DisplayAInstructorComponent.propTypes = {
-    instructor: PropTypes.shape(anInstructorShape),
-    onClickDelete: PropTypes.func.isRequired
+    }
 }
 
 export default DisplayAInstructorComponent
