@@ -28,7 +28,7 @@ const courses = (state = initialStates, action) => {
 
         case cst.GET_COURSE_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
-                data: state.data.filter(a => a.courseId == action.payload ? a : null),
+                data: state.data.filter(a => a.courseId === action.payload ? a : null),
                 status: action.type
             })
         }
@@ -74,19 +74,21 @@ const courses = (state = initialStates, action) => {
 
         case cst.DELETE_COURSE: {
             return Object.assign({}, state, {
-                data: state.data.filter(a => a.id != action.payload ? a : null),
+                data: state.data.filter(a => a.id !== action.payload ? a : null),
                 status: cst.GET_COURSES_SUCCESS
             })
         }
 
         case cst.DELETE_COURSE_SUCCESS: {
             return Object.assign({}, state, {
-                data: state.data.filter(a => a.courseId != action.payload ? a : null),
+                data: state.data.filter(a => a.courseId !== action.payload ? a : null),
                 status: cst.GET_COURSES_SUCCESS
             })
         }
+        
+        default:
+          return state;
     }
-    return state;
 }
 
 export default courses

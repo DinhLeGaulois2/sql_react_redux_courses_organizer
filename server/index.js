@@ -1,6 +1,5 @@
 // Main starting point of the application
 const express = require('express');
-const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
@@ -16,7 +15,6 @@ var initValues = require("./data/initialData.js");
 
 // Import routes and give the server access to them.
 require("./routes/auth-routes.js")(app);
-require("./routes/html-routes.js")(app);
 
 // Server Setup
 const PORT = process.env.PORT || 3090;

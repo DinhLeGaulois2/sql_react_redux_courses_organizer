@@ -26,10 +26,10 @@ ReactDOM.render(
     <BrowserRouter>
       <App>
         <Route path="/" exact component={Welcome} />
-        <Route path="/mainMenu" component={MainMenuComponent} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/signout" component={Signout} />
-        <Route path="/signin" component={Signin} />
+        <Route path="/mainMenu" exact component={MainMenuComponent} />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/signout" exact component={Signout} />
+        <Route path="/signin" exact component={Signin} />
       </App>
     </BrowserRouter>
   </Provider>,

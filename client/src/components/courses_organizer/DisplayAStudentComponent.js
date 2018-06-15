@@ -1,18 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
+import actions from "../../actions/courses_organizer/courseAction"
 
 class DisplayAStudentComponent  extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
-        const { student, onClickDelete } = this.props
+        const { student, deleteAStudent } = this.props
 
         return (
     <div>
@@ -22,7 +17,7 @@ class DisplayAStudentComponent  extends React.Component {
                     <h3 align="center" className="centeredChapterTitle"><font color="blue"><b>Student</b></font></h3>
                     <button type="button" className="btnDelete" onClick={e => {
                         e.preventDefault()
-                        onClickDelete(student.id)
+                        deleteAStudent(student.id)
                     }}>x</button>
                 </div>
                 <b><u>Name</u></b>: {student.fName} {student.lName}<br />
@@ -56,4 +51,8 @@ class DisplayAStudentComponent  extends React.Component {
     }
 }
 
-export default DisplayAStudentComponent
+const mapStateToProps = (state) => ({
+    student: state.students.data[0],
+})
+
+export default connect(mapStateToProps, actions)(requireAuth(DisplayAStudentComponent))

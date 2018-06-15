@@ -24,7 +24,7 @@ const reservationAction = {
         return dispatch => {
             var result = {}
             result.name = data.name
-            result.budget = parseInt(data.budget)
+            result.budget = parseInt(data.budget, 10)
             result.administrator = data.administrator
             result.startDate = new Date()
             axios.post("http://localhost:3090/api/add/department", result, {
@@ -45,10 +45,10 @@ const reservationAction = {
     addInstructor: (data) => {
         return dispatch => {
             let obj = {}
-            obj.lastName = data.lastName,
-            obj.firstName = data.firstName,
-            obj.type = "student",
-            obj.hireDate = new Date(),
+            obj.lastName = data.lastName
+            obj.firstName = data.firstName
+            obj.type = "student"
+            obj.hireDate = new Date()
             obj.enrollmentDate = new Date()
             axios.post("http://localhost:3090/api/add/instructor", obj, {
                 headers: {
@@ -68,10 +68,10 @@ const reservationAction = {
     addStudent: (data) => {
         return dispatch => {
             let obj = {}
-            obj.lastName = data.lastName,
-            obj.firstName = data.firstName,
-            obj.type = "student",
-            obj.hireDate = new Date(),
+            obj.lastName = data.lastName
+            obj.firstName = data.firstName
+            obj.type = "student"
+            obj.hireDate = new Date()
             obj.enrollmentDate = new Date()
             axios.post("http://localhost:3090/api/add/student", obj, {
                 headers: {
@@ -203,7 +203,7 @@ const reservationAction = {
         }
     },
 
-    deleteAInstructor: (iId) => {
+    deleteAnInstructor: (iId) => {
         return dispatch => {
             axios.delete("http://localhost:3090/api/delete/instructor/" + iId, {
                 headers: {
@@ -254,7 +254,7 @@ const reservationAction = {
     setStatus: (mainStatus, actionStatus) => {
         return dispatch => {
             if (actionStatus.length > 0) {
-                if (actionStatus == cst.GET_STUDENTS) {
+                if (actionStatus === cst.GET_STUDENTS) {
                     axios.get("http://localhost:3090/api/get/students", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -268,7 +268,7 @@ const reservationAction = {
                         })
                         .catch(err => { alert("Students Request Error: " + err) })
                 }
-                else if (actionStatus == cst.GET_INSTRUCTORS) {
+                else if (actionStatus === cst.GET_INSTRUCTORS) {
                     axios.get("http://localhost:3090/api/get/instructors", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -282,7 +282,7 @@ const reservationAction = {
                         })
                         .catch(err => { alert("Instructors Request Error: " + err) })
                 }
-                else if (actionStatus == cst.GET_COURSES) {
+                else if (actionStatus === cst.GET_COURSES) {
                     axios.get("http://localhost:3090/api/get/courses", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -296,7 +296,7 @@ const reservationAction = {
                         })
                         .catch(err => { alert("Courses Request Error: " + err) })
                 }
-                else if (actionStatus == cst.ADD_COURSE) {
+                else if (actionStatus === cst.ADD_COURSE) {
                     axios.get("http://localhost:3090/api/get/departments", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -318,17 +318,17 @@ const reservationAction = {
                         }
                         ).catch(err => alert(err))
                 }
-                else if (actionStatus == cst.ADD_INSTRUCTOR) {
+                else if (actionStatus === cst.ADD_INSTRUCTOR) {
                     dispatch({
                         type: actionStatus
                     })
                 }
-                else if (actionStatus == cst.ADD_STUDENT) {
+                else if (actionStatus === cst.ADD_STUDENT) {
                     dispatch({
                         type: actionStatus
                     })
                 }
-                else if (actionStatus == cst.ADD_DEPARTMENT) {
+                else if (actionStatus === cst.ADD_DEPARTMENT) {
                     dispatch({
                         type: actionStatus
                     })

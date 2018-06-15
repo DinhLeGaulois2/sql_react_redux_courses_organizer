@@ -57,8 +57,9 @@ const departments = (state = initialStates, action) => {
                 status: action.type
             })
         }
+        default:
+            return state;
     }
-    return state;
 }
 
 export default departments

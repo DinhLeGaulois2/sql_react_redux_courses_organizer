@@ -1,6 +1,6 @@
 import React from 'react'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import actions from '../../actions/courses_organizer/courseAction'
@@ -23,12 +23,9 @@ const validate = values => {
 }
 
 class AddDepartmentComponent extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
-        const { handleSubmit, invalid, submitting, reset } = this.props
+        const { handleSubmit, invalid, submitting, reset, addDeparment } = this.props
 
         return (
             <div>
@@ -46,7 +43,7 @@ class AddDepartmentComponent extends React.Component {
                     }}>Add New Department</div>
                 </div>
                 <br />
-                <form onSubmit={handleSubmit(this.props.onClickAddDepartment)}>
+                <form onSubmit={handleSubmit(addDeparment)}>
                     <div>
                         <Field name="name" component={renderInputField} placeholder="Name" /><br />
                         <Field name="budget" component={renderInputField} placeholder="Budget" validate={number} /><br />

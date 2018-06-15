@@ -40,7 +40,7 @@ const instructors = (state = initialStates, action) => {
 
         case cst.GET_INSTRUCTOR_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
-                data: state.data.filter(a => a.id == action.payload ? a : null),
+                data: state.data.filter(a => a.id === action.payload ? a : null),
                 status: action.type
             })
         }
@@ -66,12 +66,13 @@ const instructors = (state = initialStates, action) => {
 
         case cst.DELETE_INSTRUCTOR_SUCCESS: {
             return Object.assign({}, state, {
-                data: state.data.filter(a => a.id != action.payload ? a : null),
+                data: state.data.filter(a => a.id !== action.payload ? a : null),
                 status: cst.GET_INSTRUCTORS_SUCCESS
             })
         }
+        default:
+            return state;
     }
-    return state;
 }
 
 export default instructors
