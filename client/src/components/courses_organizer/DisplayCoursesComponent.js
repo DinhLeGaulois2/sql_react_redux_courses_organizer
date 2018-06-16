@@ -44,15 +44,8 @@ class DisplayCoursesComponent extends React.Component {
     }
 }
 
-//KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-const showData = (state) => {
-    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-    console.log("DisplayCoursesComponent: " + JSON.stringify(state, null, 5))
-    return state.courses.data
-}
 const mapStateToProps = (state) => ({
-    data: showData(state)
-    // data: state.courses.data,
+    data: state.courses.data,
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(DisplayCoursesComponent))
