@@ -5,7 +5,7 @@ import requireAuth from '../../components/requireAuth';
 import '../../style.scss'
 import actions from "../../actions/courses_organizer/courseAction"
 
-class DisplayAInstructorComponent extends React.Component {
+class DisplayAInstructorComponent extends React.Component {   
     render() {
         const { instructor, deleteAnInstructor } = this.props
 

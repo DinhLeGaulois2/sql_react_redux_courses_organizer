@@ -4,8 +4,8 @@ import requireAuth from '../requireAuth'
 import '../HeaderStyle.css';
 import '../../style.scss'
 
-import AddUIComponent from '../../components/courses_organizer/AddUIComponent'
-import DisplayUIComponent from '../../components/courses_organizer/DisplayUIComponent'
+import AddUIComponent from './AddUIComponent'
+import DisplayUIComponent from './DisplayUIComponent'
 
 const MainMenuComponent = ({ match }) =>
     <div>
@@ -13,7 +13,6 @@ const MainMenuComponent = ({ match }) =>
             <NavLink to={`${match.url}/add`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add</NavLink>
             <NavLink to={`${match.url}/display`} className="navLink" strict activeStyle={{ color: 'blue' }}>Display</NavLink>
         </div>
-
         <Route path={`${match.url}/add`} component={AddUIComponent} />
         <Route path={`${match.url}/display`} component={DisplayUIComponent} />
     </div>

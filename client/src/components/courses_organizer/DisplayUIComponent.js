@@ -15,15 +15,16 @@ class DisplayUIComponent extends React.Component {
                 <div style={{ "backgroundColor": "black" }}>
                     <br />
                     <p align="center">
-                        <NavLink to={`${match.url}/courses`} className="navLink" strict activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Courses</NavLink>
-                        <NavLink to={`${match.url}/instructors`} className="navLink" strict activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Instructors</NavLink>
-                        <NavLink to={`${match.url}/students`} className="navLink" strict activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Students</NavLink>
+                        <NavLink to={`${match.url}/courses`} className="navLink" activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Courses</NavLink>
+                        <NavLink to={`${match.url}/instructors`} className="navLink" activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Instructors</NavLink>
+                        <NavLink to={`${match.url}/students`} className="navLink" activeStyle={{ color: 'blue', fontSize: 'bold' }}>Show Students</NavLink>
                     </p>
                     <br />
                 </div>
-                <Route path={`${match.url}/courses`} component={DisplayCoursesComponent} />
-                <Route path={`${match.url}/instructors`} component={DisplayInstructorsComponent} />
-                <Route path={`${match.url}/students`} component={DisplayStudentsComponent} />
+    
+                <Route path={`${match.url}/courses`} exact component={DisplayCoursesComponent} />
+                <Route path={`${match.url}/instructors`} exact component={DisplayInstructorsComponent} />
+                <Route path={`${match.url}/students`} exact component={DisplayStudentsComponent} />
             </div>
         )
     }

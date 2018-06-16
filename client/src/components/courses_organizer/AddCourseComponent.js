@@ -22,7 +22,7 @@ const validate = values => {
 class AddCourseComponent extends React.Component {
 
     render() {
-        const { handleSubmit, invalid, submitting, reset, dpt, addCourse } = this.props
+        const { handleSubmit, invalid, submitting, reset, addCourse, dpt } = this.props
 
         return (
             <div>
@@ -47,8 +47,8 @@ class AddCourseComponent extends React.Component {
                         <label>Department?</label>  &nbsp;
                 <Field name="departmentId" component="select">
                             <option></option>
-                            {dpt.map(a =>
-                                <option key={a.id} value={a.id}>{a.name} (administrator: {a.administrator}) </option>
+                            {dpt.map((a, index) =>
+                                <option key={index} value={a.id}>{a.name} (administrator: {a.administrator}) </option>
                             )}
                         </Field>
                     </div>
@@ -62,12 +62,16 @@ class AddCourseComponent extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    dpt: state.courses.data,
+})
+
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
     dispatch(reset('addCourseForm'));
 
 export default compose(
-    connect(null, actions),
+    connect(mapStateToProps, actions),
     reduxForm({
         form: 'addCourseForm',
         validate,

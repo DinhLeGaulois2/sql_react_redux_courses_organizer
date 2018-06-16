@@ -112,6 +112,8 @@ module.exports = function (app) {
 
 
     app.get("/api/get/courses", requireAuth, (req, res, next) => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("api-routes-read, getCourses!")
         let result = [];
         db.course.findAll({ attributes: ['id'] })
             .then(data => {
@@ -292,6 +294,8 @@ module.exports = function (app) {
     })
 
     app.get("/api/get/students", requireAuth, (req, res, next) => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("api-routes-read, getStudents!")
         db.person.findAll({
             where: { type: 'student' },
             attributes: ['id', 'lastName', 'firstName'],

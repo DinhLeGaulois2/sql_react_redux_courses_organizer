@@ -251,16 +251,20 @@ const reservationAction = {
         }
     },
 
-    setStatus: (mainStatus, actionStatus) => {
+    setStatus: (actionStatus) => {
         return dispatch => {
             if (actionStatus.length > 0) {
                 if (actionStatus === cst.GET_STUDENTS) {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("client, actions, setStatus, getStudents!")
                     axios.get("http://localhost:3090/api/get/students", {
                         headers: {
                             'authorization': localStorage.getItem('token')
                         }
                     })
                         .then(response => {
+                            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                            console.log("client, actions, setStatus: " + JSON.stringify(response, null, 5))
                             dispatch({
                                 type: cst.GET_STUDENTS_SUCCESS,
                                 payload: response.data
@@ -269,6 +273,8 @@ const reservationAction = {
                         .catch(err => { alert("Students Request Error: " + err) })
                 }
                 else if (actionStatus === cst.GET_INSTRUCTORS) {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("client, actions, setStatus, GET_INSTRUCTORS!")
                     axios.get("http://localhost:3090/api/get/instructors", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -283,6 +289,8 @@ const reservationAction = {
                         .catch(err => { alert("Instructors Request Error: " + err) })
                 }
                 else if (actionStatus === cst.GET_COURSES) {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("client, actions, setStatus, GET_COURSES!")
                     axios.get("http://localhost:3090/api/get/courses", {
                         headers: {
                             'authorization': localStorage.getItem('token')
@@ -334,7 +342,6 @@ const reservationAction = {
                     })
                 }
             }
-            if (mainStatus.length > 0) dispatch({ type: mainStatus })
         }
     }
 }

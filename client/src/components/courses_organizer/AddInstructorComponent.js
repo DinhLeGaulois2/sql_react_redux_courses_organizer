@@ -35,7 +35,7 @@ class AddInstructorComponent extends React.Component {
                         'fontWeight': 'bold',
                         'textAlign': 'center',
                         'margin': '20px 0px'
-                    }}>Add New Department</div>
+                    }}>Add New Instructor</div>
                 </div>
                 <br />
                 <form onSubmit={handleSubmit(addInstructor)}>

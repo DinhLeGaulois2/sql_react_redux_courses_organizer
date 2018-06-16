@@ -4,8 +4,14 @@ import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
 import actions from "../../actions/courses_organizer/courseAction"
+import cst from '../../constants/courses_organizer/cst'
 
 class DisplayCoursesComponent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.props.setStatus(cst.GET_COURSES)
+    }
+    
     render() {
         const { data, getACourse, deleteACourse } = this.props
 
@@ -38,8 +44,15 @@ class DisplayCoursesComponent extends React.Component {
     }
 }
 
+//KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+const showData = (state) => {
+    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+    console.log("DisplayCoursesComponent: " + JSON.stringify(state, null, 5))
+    return state.courses.data
+}
 const mapStateToProps = (state) => ({
-    data: state.courses.data,
+    data: showData(state)
+    // data: state.courses.data,
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(DisplayCoursesComponent))

@@ -4,8 +4,14 @@ import requireAuth from '../../components/requireAuth';
 
 import '../../style.scss'
 import actions from "../../actions/courses_organizer/courseAction"
+import cst from '../../constants/courses_organizer/cst'
 
 class DisplayStudentsComponent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.props.setStatus(cst.GET_STUDENTS)
+    }
+    
     render() {
         const { data, getAStudent, deleteAStudent } = this.props
 
