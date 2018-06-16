@@ -27,25 +27,25 @@ class DisplayACourseComponent extends React.Component {
                             <div>
                                 <b><u>Type</u>: <font color="green">Onsite</font></b>
                                 <ul>
-                                    {aCourse.onsiteSchedule.map(e => {
+                                    {aCourse.onsiteSchedule.map(e => 
                                         <li key={e.id}><b>Location</b>: {e.location}, <b>Day</b>: {e.days}, <b>Time</b>: {e.times}</li>
-                                    })}
+                                    )}
                                 </ul>
                             </div>
                         }
                         {!aCourse.isOnsite &&
                             <p><b><u>Type</u>: <font color="green">Online</font></b></p>
                         }
-                        {aCourse.instructors.length == 1 &&
+                        {aCourse.instructors.length === 1 &&
                             <p><b><u>Instructor</u></b>: {aCourse.instructors[0].fName} {aCourse.instructors[0].lName}</p>
                         }
                         {aCourse.instructors.length > 1 &&
                             <div>
                                 <b><u>Instructors</u>:</b>
                                 <ul>
-                                    {aCourse.instructors.map((e, index) => {
+                                    {aCourse.instructors.map((e, index) => 
                                         <li key={e.id}><b><u>Instructor</u></b>: {e.fName} {e.lName}</li>
-                                    })}
+                                    )}
                                 </ul>
                             </div>
                         }

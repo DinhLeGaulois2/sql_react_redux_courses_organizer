@@ -21,10 +21,10 @@ class DisplayAInstructorComponent extends React.Component {
                             }}>x</button>
                         </div>
                         <b><u>Name</u></b>: {instructor.fName} {instructor.lName}<br />
-                        {instructor.courses.length == 1 &&
+                        {instructor.courses.length === 1 &&
                             <div>
                                 <span>
-                                    <b><u>Course</u></b>: {instructor.courses[0].title} (Dpt: {instructor.courses[0].department.name}, type: <font color="green"><b>{e.isOnsite ? "Onsite" : "Online"}</b></font>))</span><br />
+                                    <b><u>Course</u></b>: {instructor.courses[0].title} (Dpt: {instructor.courses[0].department.name}, type: <font color="green"><b>{instructor.isOnsite ? "Onsite" : "Online"}</b></font>))</span><br />
                                 <b><u>Number of Students</u></b>: {instructor.studentNum}<br />
                             </div>
                         }

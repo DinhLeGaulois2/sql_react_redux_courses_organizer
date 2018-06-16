@@ -11,6 +11,11 @@ class DisplayStudentsComponent extends React.Component {
         super(props)
         this.props.setStatus(cst.GET_STUDENTS)
     }
+
+    showAStudent(id){
+        this.props.getAStudent(id)
+        this.props.history.push('mainMenu/display/a_student')
+    }
     
     render() {
         const { data, getAStudent, deleteAStudent } = this.props
@@ -21,7 +26,7 @@ class DisplayStudentsComponent extends React.Component {
                     <tr><th align="center"><h3 align="center"><font color="blue"><b>Students</b></font></h3></th></tr>
                     {data.map((d, index) =>
                         <tr key={index}><td style={{ 'backgroundColor': 'white', 'color': 'black', 'padding': '20px', 'borderRadius': '20px' }}>
-                            <div onClick={e => { getAStudent(d.id) }} className="relative">
+                            <div onClick={e => { this.showAStudent(d.id, getAStudent) }} className="relative">
                                 <h3 align="center" className="centeredChapterTitle"><font color="blue"><b>Student (id: {d.id})</b></font></h3>
                                 <button type="button" className="btnDelete" onClick={e => {
                                     e.preventDefault()
@@ -51,6 +56,7 @@ class DisplayStudentsComponent extends React.Component {
 
 const mapStateToProps = (state) => ({
     data: state.students.data,
+    isList: state.students.isList
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(DisplayStudentsComponent))

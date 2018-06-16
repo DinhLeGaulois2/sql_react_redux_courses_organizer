@@ -152,7 +152,7 @@ const reservationAction = {
         }
     },
 
-    getAInstructor: (iId) => {
+    getAnInstructor: (iId) => {
         return dispatch => {
             dispatch({
                 type: cst.GET_INSTRUCTOR_BY_ID_SUCCESS,
