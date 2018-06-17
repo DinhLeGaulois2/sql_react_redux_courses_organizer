@@ -37,7 +37,7 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 ![alt text](assets/img/addDepartment.jpg)
 
 ### Add a Course
-![alt text](assets/img/addDCourse.jpg)
+![alt text](assets/img/addCourse.jpg)
 
 ### List of Students
 ![alt text](assets/img/studentsList.jpg)
