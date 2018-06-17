@@ -33,14 +33,17 @@ We could make **C**reate, **R**ead, **U**pdate or **D**elete with this database.
 ---
 
 ## User Interface
+### Add a Department
+![alt text](assets/img/addDepartment.jpg)
+
+### Add a Course
+![alt text](assets/img/addDCourse.jpg)
+
 ### List of Students
 ![alt text](assets/img/studentsList.jpg)
 
 ### All Information about a Student
 ![alt text](assets/img/student.jpg)
-
-### Add a Department
-![alt text](assets/img/addDepartment.jpg)
 
 ---
 
