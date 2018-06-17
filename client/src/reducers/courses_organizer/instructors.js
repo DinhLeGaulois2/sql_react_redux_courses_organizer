@@ -10,19 +10,21 @@ const instructors = (state = initialStates, action) => {
         case cst.ADD_INSTRUCTOR_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
-                status: action.type
+                isList: false
             })
         }
 
         case cst.GET_INSTRUCTOR_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.id === action.payload ? a : null),
+                isList: false
             })
         }
 
         case cst.GET_INSTRUCTORS_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
+                isList: true
             })
         }
 

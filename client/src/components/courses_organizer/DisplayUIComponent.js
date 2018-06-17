@@ -7,10 +7,6 @@ import DisplayCoursesComponent from './DisplayCoursesComponent'
 import DisplayInstructorsComponent from './DisplayInstructorsComponent'
 import DisplayStudentsComponent from './DisplayStudentsComponent'
 
-import DisplayACourseComponent from './DisplayACourseComponent'
-import DisplayAInstructorComponent from './DisplayAInstructorComponent'
-import DisplayAStudentComponent from './DisplayAStudentComponent'
-
 class DisplayUIComponent extends React.Component {
     render() {
         const { match } = this.props
@@ -29,10 +25,6 @@ class DisplayUIComponent extends React.Component {
                 <Route path={`${match.url}/courses`} exact component={DisplayCoursesComponent} />
                 <Route path={`${match.url}/instructors`} exact component={DisplayInstructorsComponent} />
                 <Route path={`${match.url}/students`} exact component={DisplayStudentsComponent} />
-                
-                <Route path={`${match.url}/display/a_course`} exact component={DisplayACourseComponent} />
-                <Route path={`${match.url}/display/a_instructor`} exact component={DisplayAInstructorComponent} />
-                <Route path={`${match.url}/display/a_student`} exact component={DisplayAStudentComponent} />
             </div>
         )
     }

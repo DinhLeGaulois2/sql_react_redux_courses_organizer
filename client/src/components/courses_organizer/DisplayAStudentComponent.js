@@ -22,8 +22,8 @@ class DisplayAStudentComponent extends React.Component {
                         </div>
                         <b><u>Name</u></b>: {student.fName} {student.lName}<br />
                         <ul>
-                            {student.courses.map(aCourse =>
-                                <li key={aCourse.id}>
+                            {student.courses.map((aCourse, index) =>
+                                <li key={index}>
                                     <b><u>Course</u></b>: {aCourse.title}<br />
                                     <b><u>Department</u></b>: {aCourse.department.name} (administrator: {aCourse.department.administrator})<br />
                                     {aCourse.isOnsite &&
@@ -51,15 +51,8 @@ class DisplayAStudentComponent extends React.Component {
     }
 }
 
-//KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-const showAStudent = (state) => {
-    console.log("DisplayAStudentComponent, state: " + JSON.stringify(state.students.data, null, 5))
-    return state.students.data[0]
-}
-
 const mapStateToProps = (state) => ({
-    data: showAStudent(state),
-    // data: state.students.data[0],
+    student: state.students.data[0],
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(DisplayAStudentComponent))

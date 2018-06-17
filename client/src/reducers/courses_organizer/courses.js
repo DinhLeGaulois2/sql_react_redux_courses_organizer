@@ -10,12 +10,14 @@ const courses = (state = initialStates, action) => {
         case cst.GET_COURSE_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.courseId === action.payload ? a : null),
+                isList: false
             })
         }
 
         case cst.GET_COURSES_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
+                isList: true
             })
         }
 
@@ -28,12 +30,14 @@ const courses = (state = initialStates, action) => {
         case cst.DELETE_COURSE: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.id !== action.payload ? a : null),
+                isList: true
             })
         }
 
         case cst.DELETE_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.courseId !== action.payload ? a : null),
+                isList: true
             })
         }
         

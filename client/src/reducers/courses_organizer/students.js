@@ -10,18 +10,21 @@ const students = (state = initialStates, action) => {
         case cst.ADD_STUDENT_COURSE_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
+
             })
         }
 
         case cst.GET_STUDENT_BY_ID_SUCCESS: {
             return Object.assign({}, state, {
                 data: state.data.filter(a => a.id === action.payload ? a : null),
+                isList: false
             })
         }
 
         case cst.GET_STUDENTS_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload,
+                isList: true
             })
         }
 

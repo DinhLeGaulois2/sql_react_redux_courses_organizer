@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import actions from '../../actions/courses_organizer/courseAction'
 import requireAuth from '../../components/requireAuth';
+import cst from '../../constants/courses_organizer/cst'
 
 import '../../style.scss'
 
@@ -20,6 +21,10 @@ const validate = values => {
 }
 
 class AddCourseComponent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.props.setStatus(cst.ADD_COURSE)
+    }
 
     render() {
         const { handleSubmit, invalid, submitting, reset, addCourse, dpt } = this.props
@@ -48,7 +53,7 @@ class AddCourseComponent extends React.Component {
                 <Field name="departmentId" component="select">
                             <option></option>
                             {dpt.map((a, index) =>
-                                <option key={index} value={a.id}>{a.name} (administrator: {a.administrator}) </option>
+                                <option key={index} value={a.id}>{a.name}</option>
                             )}
                         </Field>
                     </div>
@@ -63,7 +68,7 @@ class AddCourseComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    dpt: state.courses.data,
+    dpt: state.departments.data,
 })
 
 // Reset the form after submission

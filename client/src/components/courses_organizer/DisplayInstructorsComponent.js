@@ -14,12 +14,13 @@ class DisplayInstructorsComponent extends React.Component {
         this.props.setStatus(cst.GET_INSTRUCTORS)
     }
 
+    showAnInstructor = (id) => {
+        this.props.getAnInstructor(id)
+    }
+    
     render() {
         const { data, deleteAnInstructor, isList } = this.props
 
-        showAnInstructor = (id) => {
-            this.props.getAnInstructor(id)
-        }
 
         return (
             <div>

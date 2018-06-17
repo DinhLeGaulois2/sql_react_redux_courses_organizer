@@ -312,7 +312,7 @@ const reservationAction = {
                                 })
                             }
                             dispatch({
-                                type: actionStatus,
+                                type: cst.GET_DEPARTMENTS_SUCCESS,
                                 payload: obj
                             })
                         }
